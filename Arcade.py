@@ -74,6 +74,45 @@ def on_release(key):
         # Stop listener
         return False
 
+def get_key_from_string(key):
+    if key=='esc':
+        return Key.esc
+    elif key=='space':
+        return Key.space
+    elif key=='return':
+        return Key.enter
+    elif key=='tab':
+        return Key.tab
+    elif key=='f1':
+        return Key.f1
+    elif key=='f2':
+        return Key.f2
+    elif key=='f3':
+        return Key.f3
+    elif key=='f4':
+        return Key.f4
+    elif key=='f5':
+        return Key.f5
+    elif key=='f6':
+        return Key.f6
+    elif key=='f7':
+        return Key.f17
+    elif key=='f8':
+        return Key.f8
+    elif key=='f9':
+        return Key.f9
+    elif key=='f10':
+        return Key.f10
+    elif key=='f11':
+        return Key.f11
+    elif key=='f12':
+        return Key.f12
+    elif key=='ctrl':
+        return Key.ctrl
+    else:
+        print("Unknown key: "+var+" ("+str(len(var))+")")
+        return None
+
 def load_game(gameName):
     cwd = os.getcwd()
     game_config_lines=[]
@@ -110,7 +149,8 @@ def load_game(gameName):
             if len(var)==1:
                 pressRelease(var)
             else:
-                for key in var.split("+"):
+                pressRelease(get_key_from_string(var))
+                """for key in var.split("+"):
                     if key=='esc':
                         pressRelease(Key.esc)
                     elif key=='space':
@@ -127,18 +167,13 @@ def load_game(gameName):
                         mod_ctrl = True
                         keyboard_.press(Key.ctrl)
                     else:
-                        print("Unknown key: "+var+" ("+str(len(var))+")")
+                        print("Unknown key: "+var+" ("+str(len(var))+")")"""
         elif command=='hold':
             print("holding")
-            if var=='return':
-                keyboard_.press(Key.enter)
+            keyboard_.press(get_key_from_string(var))
         elif command=='release': 
             print("releasing")   
-            if var=='return':
-                keyboard_.release(Key.enter)
-        if mod_ctrl:
-            mod_ctrl = False
-            keyboard_.release(Key.ctrl)
+            keyboard_.release(get_key_from_string(var))
     print("Done")
 
     
@@ -150,4 +185,4 @@ def load_game(gameName):
     p.terminate()
     pJoypad.terminate()
 
-load_game("PacMan")
+load_game("DDerby")
