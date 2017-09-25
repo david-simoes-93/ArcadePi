@@ -8,8 +8,56 @@ Joystick 1 {
 	Button 3: key 65
 	Button 4: key 65
 	Button 5: key 65
-	Button 6: key 65
-	Button 7: key 65
 	Button 8: key 23
+	Button 9: key 23
+	Button 10: key 23
+	Button 11: key 23
+	Button 12: key 36
 }
+
+Joystick 2 {
+	Axis 1: +key 116, -key 111
+	Axis 4: +key 113, -key 114
+	Button 1: key 119
+	Button 2: key 23
+	Button 3: key 23
+	Button 4: key 23
+	Button 5: key 23
+	Button 8: key 23
+	Button 9: key 23
+	Button 10: key 23
+	Button 11: key 23
+	Button 12: key 23
+}
+
+# up down 		mouse+v
+# left right 	mouse+h
+# lmb			mouse 1
+# rmb			mouse 3
+# up down		+key 116, -key 111
+# left right	+key 113, -key 114
+# f1			key 67
+# f12			key 96
+# 1 			key 10
+# 0 			key 19
+# q 			key 24
+# p 			key 33
+# a 			key 38
+# l 			key 46
+# z 			key 52
+# m 			key 58
+# ctrl			key 37
+# alt			key 64
+# delete 		key 119
+# \ 			key 49
+# tab 			key 23
+# shift			key 50
+# , 			key 59
+# . 			key 60
+# return		key 36
+# pageup		key 112
+# pagedown 		key 117
+# home			key 110
+# end			key 115
+# escape		key 9
 
