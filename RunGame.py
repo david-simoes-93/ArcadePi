@@ -28,47 +28,47 @@ def detect_endgame_key(key):
 
 
 def get_key_from_string(key):
-    if key == 'esc':
+    if key == 'Escape':
         return Key.esc
     elif key == 'space':
         return Key.space
-    elif key == 'return':
+    elif key == 'Return':
         return Key.enter
-    elif key == 'tab':
+    elif key == 'Tab':
         return Key.tab
-    elif key == 'f1':
+    elif key == 'F1':
         return Key.f1
-    elif key == 'f2':
+    elif key == 'F2':
         return Key.f2
-    elif key == 'f3':
+    elif key == 'F3':
         return Key.f3
-    elif key == 'f4':
+    elif key == 'F4':
         return Key.f4
-    elif key == 'f5':
+    elif key == 'F5':
         return Key.f5
-    elif key == 'f6':
+    elif key == 'F6':
         return Key.f6
-    elif key == 'f7':
-        return Key.f17
-    elif key == 'f8':
+    elif key == 'F7':
+        return Key.f7
+    elif key == 'F8':
         return Key.f8
-    elif key == 'f9':
+    elif key == 'F9':
         return Key.f9
-    elif key == 'f10':
+    elif key == 'F10':
         return Key.f10
-    elif key == 'f11':
+    elif key == 'F11':
         return Key.f11
-    elif key == 'f12':
+    elif key == 'F12':
         return Key.f12
-    elif key == 'ctrl':
+    elif key == 'Control_L':
         return Key.ctrl
-    elif key == 'left':
+    elif key == 'Left':
         return Key.left
-    elif key == 'right':
+    elif key == 'Right':
         return Key.right
-    elif key == 'up':
+    elif key == 'Up':
         return Key.up
-    elif key == 'down':
+    elif key == 'Down':
         return Key.down
     else:
         print("Unknown key: " + key + " (" + str(len(key)) + ")")
@@ -117,7 +117,7 @@ class Game:
                     #print(line)
                     processed_lyt.write(line)
 
-    def load_game(self):
+    def start_game(self):
         print("Launching game")
 
         # Start QJoypad
@@ -157,3 +157,8 @@ class Game:
         # Kill processes
         game.terminate()
         p_joypad.terminate()
+
+    def load_game(self):
+        # http://xmodulo.com/how-to-checkpoint-and-restore-linux-process.html
+        # https://criu.org/Installation
+        pass

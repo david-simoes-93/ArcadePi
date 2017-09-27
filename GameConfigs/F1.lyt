@@ -1,16 +1,33 @@
 # QJoyPad 4.1 Layout File
 
 Joystick 1 {
-	Axis 1: +key 116, -key 111
-	Axis 4: +key 113, -key 114
-	Button 1: key 65
-	Button 2: key 65
-	Button 3: key 65
-	Button 4: key 65
-	Button 5: key 65
-	Button 6: key 65
-	Button 7: key 65
-	Button 8: key 23
+	Axis 1: +key %a, -key %z
+	Axis 4: +key %comma, -key %period
+	Button 1: key %space
+	Button 2: key %Alt_L
+	Button 3: key %Alt_L
+	Button 4: key %Alt_L
+	Button 5: key %Alt_L
+	Button 8: key %space
+	Button 9: key %space
+	Button 10: key %space
+	Button 11: key %space
+	Button 12: key %Escape
+}
+
+Joystick 2 {
+	Axis 1: +key %a, -key %z
+	Axis 4: +key %comma, -key %period
+	Button 1: key %Delete
+	Button 2: key %Alt_L
+	Button 3: key %Alt_L
+	Button 4: key %Alt_L
+	Button 5: key %Alt_L
+	Button 8: key %space
+	Button 9: key %space
+	Button 10: key %space
+	Button 11: key %space
+	Button 12: key %Return
 }
 
 # AZ,. alt space return

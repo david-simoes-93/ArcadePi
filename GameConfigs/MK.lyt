@@ -1,31 +1,33 @@
 # QJoyPad 4.1 Layout File
 
 Joystick 1 {
-	Axis 1: +key 53, -key 44
-	Axis 4: +key 52, -key 54
-	Button 1: key 65
-	Button 2: key 52
-	Button 3: key 65
-	Button 4: key 52
-	Button 5: key 65
-	Button 6: key 52
-	Button 7: key 65
-	Button 8: key 23
+	Axis 1: +key %s, -key %x
+	Axis 4: +key %z, -key %c
+	Button 1: key %F1
+	Button 2: key %u
+	Button 3: key %i
+	Button 4: key %j
+	Button 5: key %j
+	Button 8: key %n
+	Button 9: key %m
+	Button 10: key %F1
+	Button 11: key %F1
+	Button 12: key %Escape
 }
-
-# SZXC NMJUI
 
 Joystick 2 {
-	Axis 1: +key 116, -key 111
-	Axis 4: +key 113, -key 114
-	Button 1: key 65
-	Button 2: key 52
-	Button 3: key 65
-	Button 4: key 52
-	Button 5: key 65
-	Button 6: key 52
-	Button 7: key 65
-	Button 8: key 23
+	Axis 1: +key %Up, -key %Down
+	Axis 4: +key %Left, -key %Right
+	Button 1: key %Delete
+	Button 2: key %Home
+	Button 3: key %Prior
+	Button 4: key %1
+	Button 5: key %1
+	Button 8: key %End
+	Button 9: key %Next
+	Button 10: key %F2
+	Button 11: key %F2
+	Button 12: key %F2
 }
 
-# ARROWS ?
+# ARROWS pg up, home end pg down ?  || szxc i u n m j # wtf is block for player 2? todo

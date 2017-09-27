@@ -30,4 +30,4 @@ Joystick 2 {
 	Button 12: key %Return
 }
 
-# mouse buttons
+# mouse "left and right buttons"

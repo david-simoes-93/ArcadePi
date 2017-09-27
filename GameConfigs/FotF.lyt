@@ -16,8 +16,8 @@ Joystick 1 {
 }
 
 Joystick 2 {
-	Axis 1: +key %Up, -key %Down
-	Axis 4: +key %Left, -key %Right
+	Axis 1: +key %w, -key %s
+	Axis 4: +key %a, -key %d
 	Button 1: key %Delete
 	Button 2: key %space
 	Button 3: key %space
@@ -30,3 +30,4 @@ Joystick 2 {
 	Button 12: key %Return
 }
 
+# arrows and space

@@ -6,12 +6,12 @@ Joystick 1 {
 	Button 1: key %space
 	Button 2: key %space
 	Button 3: key %space
-	Button 4: key %space
-	Button 5: key %space
-	Button 8: key %space
-	Button 9: key %space
-	Button 10: key %space
-	Button 11: key %space
+	Button 4: key %z
+	Button 5: key %z
+	Button 8: key %p
+	Button 9: key %m
+	Button 10: key %d
+	Button 11: key %i
 	Button 12: key %Escape
 }
 
@@ -21,12 +21,13 @@ Joystick 2 {
 	Button 1: key %Delete
 	Button 2: key %space
 	Button 3: key %space
-	Button 4: key %space
-	Button 5: key %space
-	Button 8: key %space
-	Button 9: key %space
-	Button 10: key %space
-	Button 11: key %space
+	Button 4: key %z
+	Button 5: key %z
+	Button 8: key %p
+	Button 9: key %m
+	Button 10: key %d
+	Button 11: key %i
 	Button 12: key %Return
 }
 
+# arrows space z http://s64.emuunlim.org/manuals/grandprixcircuit.htm

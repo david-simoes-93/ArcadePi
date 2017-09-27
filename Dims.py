@@ -51,17 +51,27 @@ def intersectTwoCircles(x1,y1,r1, x2,y2,r2):
     # but that one solution will just be duplicated as the code is currently written
     return [[ix1, iy1], [ix2, iy2]]
 
+# return sum of element-wise multiplication of vectors
 def scalarProduct(v1, v2):
     val = 0
     for (a,b) in zip(v1, v2):
         val += a*b
     return val
 
+# return vector of p2 to p1
 def vectorize(p1, p2):
     val = []
     for (a,b) in zip(p1, p2):
         val.append(a-b)
     return val
+
+# return distance between 2 points
+def dist(p1, p2):
+    d = 0
+    for l in vectorize(p1,p2):
+        d += l*l
+    return np.sqrt(d)
+
 
 def getSideLengthOfTrapezium(bot, top, height):
 	return np.sqrt( ((bot-top)/2)**2 + height**2)
@@ -72,9 +82,9 @@ def getClosestPointOnPlane(planeA, planeB, planeC, planeD, pointX, pointY, point
     # y = pointY + t*planeB
     # z = pointZ + t*planeC
     # planeA*x + planeB*y + planeC*z = planeD
-    # planeA*pointX + t*planeA*planeA + planeB*pointY + t*planeB*planeB + planeC*pointZ + t*planeC*planeC + planeD = 0
+    # planeA*pointX + t*planeA*planeA + planeB*pointY + t*planeB*planeB + planeC*pointZ + t*planeC*planeC = planeD
     # t = (planeD - planeA*pointX - planeB*pointY - planeC*pointZ) / (planeA*planeA + planeB*planeB + planeC*planeC)
-    t = (-planeD - planeA * pointX - planeB * pointY - planeC * pointZ) / \
+    t = (planeD - planeA * pointX - planeB * pointY - planeC * pointZ) / \
         (planeA * planeA + planeB * planeB + planeC * planeC)
     return [pointX + t*planeA,pointY + t*planeB,pointZ + t*planeC]
 
@@ -89,6 +99,8 @@ topLength = 5
 
 joyPanelHeight = 20
 screenPanelHeight = 30    # screen is 24*30
+
+thickness = 1
 
 print("Plank = 61 * 122 * 1")
 
@@ -127,13 +139,13 @@ sideCorner2d = intersectTwoCircles(sidePoint2d[0],sidePoint2d[1],screenPanelSide
 sideCorner2d = sideCorner2d[0] if sideCorner2d[0][1]>sideCorner2d[1][1] else sideCorner2d[1] #pick highest point
 print("Side Top Panel ",sideTopPanelBack,"*",sidePanelsIntersection,"*",screenPanelSide,"*",topLength,". Peaks at ",sidePoint2d,"and",sideCorner2d)
 
-baseOutPoint = [length,0,-1]
+baseOutPoint = [length,0,-thickness]
 pointInPlane = getClosestPointOnPlane(planeEq[0],planeEq[1],planeEq[2],planeEq[3],
                                       baseOutPoint[0],baseOutPoint[1],baseOutPoint[2])     # get point in plane closest to baseOutPoint
-dist1 = 0                           # get distance of basePoint to pointInPlane
-dist2 = 0                           # get distance of sidePoint to pointInPlane
-baseOutPoint2d = intersectTwoCircles(0,0,dist1, sidePoint2d[0],sidePoint2d[1],dist2)
-
+dist1 = dist(basePoint, pointInPlane)                           # get distance of basePoint to pointInPlane
+dist2 = dist(sidePoint, pointInPlane)                           # get distance of sidePoint to pointInPlane
+baseOutPoint2d = intersectTwoCircles(0,0,dist1, sidePoint2d[0],sidePoint2d[1],dist2)[0]
+print("    The first peak and bottom-right corner have a disjoint of ",baseOutPoint2d,"to account for thickness in a rotated plane")
 #Front Base  rectangle 50 * 5
 #Joystick Panel  rectangle 50 * 20
 #Screen Panel trapezium [ 50 to 35 ]* 30 , side length of 30.9232921921
