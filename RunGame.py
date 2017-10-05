@@ -118,7 +118,7 @@ class Game:
                     processed_lyt.write(line)
 
     def start_game(self):
-        print("Launching game")
+        print("Launching game",self.id)
 
         # Start QJoypad
         move(self.cwd + '/GameConfigs/' + self.id + '.lyt_', '/home/david/.qjoypad3/' + self.id + '.lyt')
@@ -128,7 +128,7 @@ class Game:
         # Start game
         print(self.cwd + '/Games/' + self.id + '/' + self.game_path)
         cmd = ['dosbox', self.cwd + '/Games/' + self.id + '/' + self.game_path, '-conf',
-               self.cwd + '/Configs/' + self.config_file]
+               self.cwd + '/DosboxConfigs/' + self.config_file]
         print("Running ", cmd)
         game = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
 
@@ -162,3 +162,17 @@ class Game:
         # http://xmodulo.com/how-to-checkpoint-and-restore-linux-process.html
         # https://criu.org/Installation
         pass
+
+cmd = ['qjoypad','Doom']
+p_joypad = subprocess.Popen(cmd)
+
+print("lol")
+with keyboard.Listener(on_release=detect_endgame_key) as listener:
+     listener.join()
+
+#p_joypad.terminate()
+p_joypad.kill()
+del p_joypad
+
+
+input("end?")
