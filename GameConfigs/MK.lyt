@@ -21,8 +21,8 @@ Joystick 2 {
 	Button 1: key %Delete
 	Button 2: key %Home
 	Button 3: key %Prior
-	Button 4: key %1
-	Button 5: key %1
+	Button 4: key %dead_tilde
+	Button 5: key %dead_tilde
 	Button 8: key %End
 	Button 9: key %Next
 	Button 10: key %F2
@@ -30,4 +30,4 @@ Joystick 2 {
 	Button 12: key %F2
 }
 
-# ARROWS pg up, home end pg down ?  || szxc i u n m j # wtf is block for player 2? todo
+# ARROWS pg up, home end pg down dead_tilde  || szxc i u n m j # block for player 2 was "center" key, got changed to dead_tilde

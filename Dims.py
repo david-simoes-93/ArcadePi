@@ -90,7 +90,7 @@ def getClosestPointOnPlane(planeA, planeB, planeC, planeD, pointX, pointY, point
 
 
 botWidth = 50
-topWidth = 35
+topWidth = 40
 height = 35
 length = 40
 
@@ -111,6 +111,13 @@ print("Joystick Panel ",botWidth,"*",joyPanelHeight)
 screenPanelSide = getSideLengthOfTrapezium(botWidth, topWidth, screenPanelHeight)               # trapezium side length
 print("Screen Panel [",botWidth,"to",topWidth,"]*",screenPanelHeight, ", side length of",screenPanelSide)
 
+# find intersection of circles at point (x,y)=(0,5) with r=20 and (x,y)=(35,35) with r=30, at (19.5, 9.3)
+#              *---
+#             /   |
+#            /    |
+#  ____-----*     |
+# *               |
+# |               |
 panelsIntersection = intersectTwoCircles(0,baseHeight,joyPanelHeight, length-topLength,height,screenPanelHeight)
 if panelsIntersection == []:
     print("Configuration invalid!")
@@ -120,9 +127,17 @@ if panelsIntersection[1]<baseHeight:
     print("Configuration barely invalid!")
     exit()
 
-sidePanelsIntersection = np.sqrt(panelsIntersection[1]**2+(length-panelsIntersection[0])**2)   # line between both side panels
+# find length of line between both side panels. pithagoren theorem of (40-19.5, 9.3)
+#              /---
+#             /   |
+#            /    |
+#  ____-----/\_   |
+# |            \_ |
+# |              \|
+sidePanelsIntersection = np.sqrt((length-panelsIntersection[0])**2 + panelsIntersection[1]**2)   # line between both side panels
 print("Side Bottom Panel ",length,"*",baseHeight,"*",joyPanelHeight,"*",sidePanelsIntersection,". Peak at ",panelsIntersection)
 
+# find length of line between back top side panel and wall
 sideTopPanelBack = np.sqrt(height**2+((botWidth-topWidth)/2)**2)                         # line between top side panel and back wall
 basePoint = [length,0,0]
 sidePoint = [panelsIntersection[0],panelsIntersection[1],0]
@@ -137,7 +152,7 @@ angle = np.arccos(scalarProduct(vectorize(basePoint,sidePoint), vectorize(basePo
 sidePoint2d = [sidePanelsIntersection*np.cos(angle), sidePanelsIntersection*np.sin(angle)]
 sideCorner2d = intersectTwoCircles(sidePoint2d[0],sidePoint2d[1],screenPanelSide, sideTopPanelBack,0,topPanelSide)
 sideCorner2d = sideCorner2d[0] if sideCorner2d[0][1]>sideCorner2d[1][1] else sideCorner2d[1] #pick highest point
-print("Side Top Panel ",sideTopPanelBack,"*",sidePanelsIntersection,"*",screenPanelSide,"*",topLength,". Peaks at ",sidePoint2d,"and",sideCorner2d)
+print("Side Top Panel ",sideTopPanelBack,"*",sidePanelsIntersection,"*",screenPanelSide,"*",topPanelSide,". Peaks at ",sidePoint2d,"and",sideCorner2d)
 
 baseOutPoint = [length,0,-thickness]
 pointInPlane = getClosestPointOnPlane(planeEq[0],planeEq[1],planeEq[2],planeEq[3],

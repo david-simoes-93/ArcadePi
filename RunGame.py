@@ -1,6 +1,7 @@
 import os
 import subprocess
 import time
+import signal
 from pynput import keyboard
 from pynput.keyboard import Key, Controller
 from shutil import copyfile, move
@@ -114,16 +115,16 @@ class Game:
                                    (line[second_index:] if line[second_index:] != '' else '\n')
                         except:
                             print("Key not recognized:", "-" + line[first_index + 1:second_index] + "-")
-                    #print(line)
+                    # print(line)
                     processed_lyt.write(line)
 
     def start_game(self):
-        print("Launching game",self.id)
+        print("Launching game", self.id)
 
         # Start QJoypad
         move(self.cwd + '/GameConfigs/' + self.id + '.lyt_', '/home/david/.qjoypad3/' + self.id + '.lyt')
         cmd = ['./Qjoypad/qjoypad', self.id]
-        p_joypad = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
+        p_joypad = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True, preexec_fn=os.setsid)
 
         # Start game
         print(self.cwd + '/Games/' + self.id + '/' + self.game_path)
@@ -156,23 +157,9 @@ class Game:
 
         # Kill processes
         game.terminate()
-        p_joypad.terminate()
+        os.killpg(os.getpgid(p_joypad.pid), signal.SIGTERM)
 
     def load_game(self):
         # http://xmodulo.com/how-to-checkpoint-and-restore-linux-process.html
         # https://criu.org/Installation
         pass
-
-cmd = ['qjoypad','Doom']
-p_joypad = subprocess.Popen(cmd)
-
-print("lol")
-with keyboard.Listener(on_release=detect_endgame_key) as listener:
-     listener.join()
-
-#p_joypad.terminate()
-p_joypad.kill()
-del p_joypad
-
-
-input("end?")

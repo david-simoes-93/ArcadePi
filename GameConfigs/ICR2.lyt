@@ -1,0 +1,33 @@
+# QJoyPad 4.1 Layout File
+
+Joystick 1 {
+	Axis 1: +key %Right, -key %Left
+	Axis 4: +key %Down, -key %Up
+	Button 1: key %space
+	Button 2: key %m
+	Button 3: key %m
+	Button 4: key %v
+	Button 5: key %v
+	Button 8: key %n
+	Button 9: key %n
+	Button 10: key %v
+	Button 11: key %v
+	Button 12: key %Escape
+}
+
+Joystick 2 {
+	Axis 1: +key %d, -key %a
+	Axis 4: +key %s, -key %w
+	Button 1: key %Delete
+	Button 2: key %m
+	Button 3: key %m
+	Button 4: key %v
+	Button 5: key %v
+	Button 8: key %n
+	Button 9: key %n
+	Button 10: key %v
+	Button 11: key %v
+	Button 12: key %Return
+}
+
+# arrows MN V
