@@ -29,6 +29,9 @@ def detect_endgame_key(key):
 
 
 def get_key_from_string(key):
+    if len(key) == 1:
+        return key
+
     if key == 'Escape':
         return Key.esc
     elif key == 'space':
@@ -123,7 +126,7 @@ class Game:
 
         # Start QJoypad
         move(self.cwd + '/GameConfigs/' + self.id + '.lyt_', '/home/david/.qjoypad3/' + self.id + '.lyt')
-        cmd = ['./Qjoypad/qjoypad', self.id]
+        cmd = ['qjoypad '+self.id]
         p_joypad = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True, preexec_fn=os.setsid)
 
         # Start game
@@ -139,10 +142,7 @@ class Game:
             if command == 'sleep':
                 time.sleep(float(var))
             elif command == 'key':
-                if len(var) == 1:
-                    press_release(self.keyboard_, var)
-                else:
-                    press_release(self.keyboard_, get_key_from_string(var))
+                press_release(self.keyboard_, get_key_from_string(var))
             elif command == 'hold':
                 press(self.keyboard_, get_key_from_string(var))
             elif command == 'release':

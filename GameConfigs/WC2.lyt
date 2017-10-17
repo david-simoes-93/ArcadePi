@@ -1,0 +1,33 @@
+# QJoyPad 4.1 Layout File
+
+Joystick 1 {
+	Axis 1: +key %Right, -key %Left
+	Axis 4: +key %Down, -key %Up
+	Button 1: key %space
+	Button 2: key %Tab
+	Button 3: key %space
+	Button 4: key %Return
+	Button 5: key %plus
+	Button 8: key %BackSpace
+	Button 9: key %w
+	Button 10: key %g
+	Button 11: key %minus
+	Button 12: key %Escape
+}
+
+Joystick 2 {
+	Axis 1: +key %Right, -key %Left
+	Axis 4: +key %Down, -key %Up
+	Button 1: key %Delete
+	Button 2: key %F2
+	Button 3: key %F1
+	Button 4: key %F3
+	Button 5: key %l
+	Button 8: key %F5
+	Button 9: key %F4
+	Button 10: key %F6
+	Button 11: key %t
+	Button 12: key %Return
+}
+
+# http://www.wcnews.com/controls.shtml

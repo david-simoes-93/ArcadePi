@@ -24,13 +24,13 @@ def getPlaneEq(p1, p2, p3):
 # x1,y1 is the center of the first circle, with radius r1
 # x2,y2 is the center of the second ricle, with radius r2
 def intersectTwoCircles(x1,y1,r1, x2,y2,r2):
-    centerdx = x1 - x2;
+    """centerdx = x1 - x2;
     centerdy = y1 - y2;
     R = np.sqrt(centerdx * centerdx + centerdy * centerdy);
     if (not (np.abs(r1 - r2) <= R and R <= r1 + r2)): # no intersection
       return [] # empty list of results
-    # intersection(s) should exist
 
+    # intersection(s) should exist
     R2 = R*R;
     R4 = R2*R2;
     a = (r1*r1 - r2*r2) / (2 * R2);
@@ -46,9 +46,23 @@ def intersectTwoCircles(x1,y1,r1, x2,y2,r2):
     gy = c * (x1 - x2) / 2;
     iy1 = fy + gy;
     iy2 = fy - gy;
-
+    
     # note if gy == 0 and gx == 0 then the circles are tangent and there is only one solution
     # but that one solution will just be duplicated as the code is currently written
+    #print([ix1, iy1], [ix2, iy2])
+    #print(np.sqrt((ix1-x1)**2+(iy1-y1)**2))"""
+
+    d=np.sqrt((x2-x1)**2 + (y2-y1)**2)
+    a=(r1**2-r2**2+d**2)/(2*d)
+    h=np.sqrt(r1**2-a**2)
+    x3=x1+a*(x2-x1)/d   
+    y3=y1+a*(y2-y1)/d   
+    ix1=x3+h*(y2-y1)/d       
+    iy1=y3-h*(x2-x1)/d  
+    ix2=x3-h*(y2-y1)/d       
+    iy2=y3+h*(x2-x1)/d     
+    #print(np.sqrt((x4-x1)**2+(y4-y1)**2))
+
     return [[ix1, iy1], [ix2, iy2]]
 
 # return sum of element-wise multiplication of vectors
@@ -115,7 +129,7 @@ print("Screen Panel [",botWidth,"to",topWidth,"]*",screenPanelHeight, ", side le
 #              *---
 #             /   |
 #            /    |
-#  ____-----*     |
+#  ____-----X     |
 # *               |
 # |               |
 panelsIntersection = intersectTwoCircles(0,baseHeight,joyPanelHeight, length-topLength,height,screenPanelHeight)
@@ -137,17 +151,18 @@ if panelsIntersection[1]<baseHeight:
 sidePanelsIntersection = np.sqrt((length-panelsIntersection[0])**2 + panelsIntersection[1]**2)   # line between both side panels
 print("Side Bottom Panel ",length,"*",baseHeight,"*",joyPanelHeight,"*",sidePanelsIntersection,". Peak at ",panelsIntersection)
 
-# find length of line between back top side panel and wall
-sideTopPanelBack = np.sqrt(height**2+((botWidth-topWidth)/2)**2)                         # line between top side panel and back wall
+# find top panel's trapezium shape. start with getting the plane made by side top panel
 basePoint = [length,0,0]
 sidePoint = [panelsIntersection[0],panelsIntersection[1],0]
 topFrontPoint = [length-topLength,height,(topWidth-botWidth)/2]
 planeEq = getPlaneEq(basePoint, sidePoint, topFrontPoint)                   # plane formed by side top panel
 topBackPoint = [length,height,(planeEq[3]-planeEq[0]*length-planeEq[1]*height)/planeEq[2]]
+topBackWidth = botWidth+topBackPoint[2]*2
+topPanelSide = getSideLengthOfTrapezium(topWidth, topBackWidth, topLength)              # trapezium side length
+print("Top Panel [",topWidth,"to",topBackWidth,"] *",topLength, "side length of",topPanelSide)
 
-topPanelSide = getSideLengthOfTrapezium(topWidth, botWidth+topBackPoint[2]*2, topLength)              # trapezium side length
-print("Top Panel [",topWidth,"to",botWidth+topBackPoint[2]*2,"] *",topLength, "side length of",topPanelSide)
 
+sideTopPanelBack = np.sqrt(height**2+((botWidth-topBackWidth)/2)**2)                         # line between side top panel and back wall
 angle = np.arccos(scalarProduct(vectorize(basePoint,sidePoint), vectorize(basePoint,topBackPoint))/(sideTopPanelBack*sidePanelsIntersection)) #*180/math.pi
 sidePoint2d = [sidePanelsIntersection*np.cos(angle), sidePanelsIntersection*np.sin(angle)]
 sideCorner2d = intersectTwoCircles(sidePoint2d[0],sidePoint2d[1],screenPanelSide, sideTopPanelBack,0,topPanelSide)
