@@ -1,0 +1,63 @@
+# QJoyPad 4.1 Layout File
+
+Joystick 1 {
+	Axis 1: +key %Right, -key %Left
+	Axis 4: +key %Down, -key %Up
+	Button 1: key %space
+	Button 2: key %Control_L
+	Button 3: key %Control_L
+	Button 4: key %Control_L
+	Button 5: key %Control_L
+	Button 8: key %Alt_L
+	Button 9: key %Alt_L
+	Button 10: key %Alt_L
+	Button 11: key %Alt_L
+	Button 12: key %Escape
+}
+
+Joystick 2 {
+	Axis 1: +key %Right, -key %Left
+	Axis 4: +key %Down, -key %Up
+	Button 1: key %Delete
+	Button 2: key %Control_L
+	Button 3: key %Control_L
+	Button 4: key %Control_L
+	Button 5: key %Control_L
+	Button 8: key %Alt_L
+	Button 9: key %Alt_L
+	Button 10: key %Alt_L
+	Button 11: key %Alt_L
+	Button 12: key %Return
+}
+
+# up down 		mouse+v
+# left right 	mouse+h
+# lmb			key %Control_L
+# rmb			key %Alt_L
+# up down		+key 116, -key 111
+# left right	+key 113, -key 114
+# f1			key 67
+# f12			key 96
+# 1 			key 10
+# 0 			key 19
+# q 			key 24
+# p 			key 33
+# a 			key 38
+# l 			key 46
+# z 			key 52
+# m 			key 58
+# ctrl			key 37
+# alt			key 64
+# delete 		key 119
+# \ 			key 49
+# tab 			key 23
+# shift			key 50
+# , 			key 59
+# . 			key 60
+# return		key 36
+# pageup		key 112
+# pagedown 		key 117
+# home			key 110
+# end			key 115
+# escape		key 9
+
