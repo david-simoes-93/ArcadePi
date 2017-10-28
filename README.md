@@ -14,6 +14,7 @@ If you plan on using Arcade controls, start by installing [QJoyPad 4.1.0](http:/
     
 Next, get the emulators. Currently, only FastDosbox is being used.
 
+    sudo apt install libsdl1.2-dev
     git clone https://github.com/slacka/FastDosbox
     cd FastDosbox/fastdosbox-1.6
     ./configure
