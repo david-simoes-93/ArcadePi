@@ -12,10 +12,18 @@ If you plan on using Arcade controls, start by installing [QJoyPad 4.1.0](http:/
     make
     sudo make install
     
+Next, get the emulators. Currently, only FastDosbox is being used.
+
+    git clone https://github.com/slacka/FastDosbox
+    cd FastDosbox/fastdosbox-1.6
+    ./configure
+    make
+    sudo make install
+    
 Now, download some games, put them in the Games folder (some are already configured), and, to actually run the game
 
     sudo pip3 install pynput
-    sudo apt install dosbox python3-pil.imagetk
+    sudo apt install python3-pil.imagetk
     python3 Arcade.py
 
 
