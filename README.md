@@ -21,6 +21,15 @@ Next, get the emulators. Currently, only FastDosbox is being used.
     make
     sudo make install
     
+If you're using Raspberry Pi, then overclock it
+
+    vim /boot/config.txt
+        arm_freq=1400
+        sdram_freq=500
+        over_voltage=5
+        temp_limit=80
+        gpu_mem=128
+    
 Now, download some games, put them in the Games folder (some are already configured), and, to actually run the game
 
     sudo pip3 install pynput
