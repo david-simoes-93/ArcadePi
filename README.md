@@ -49,10 +49,24 @@ If you're using Raspberry Pi, then overclock it
     
 Get and configure this repository
 
+    cd
     git clone https://github.com/bluemoon93/ArcadePi/
     cd ArcadePi
     sed -i 's/Axis 4/Axis 2/g' GameConfigs/*.lyt
     sed -i 's/david/pi/g' RunGame.py
+    
+    cd
+    vim start_game.sh
+        #!/bin/bash
+        cd /home/pi/ArcadePi
+        python3 Arcade.py
+    vim ~/.config/autostart/start_arcade
+        [Desktop Entry]
+        Name=start_arcade
+        Exec=/home/pi/start_game.sh
+        Type=Application
+        X-GNOME-Autostart-enabled=true
+
     
 Now, download some games, put them in the Games folder (some are already configured), and, to actually run the game
 
