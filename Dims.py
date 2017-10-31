@@ -17,13 +17,14 @@ def getPlaneEq(p1, p2, p3):
     # This evaluates a * x3 + b * y3 + c * z3 which equals d
     d = np.dot(cp, p3)
 
-    #print('The equation is {0}x + {1}y + {2}z = {3}'.format(a, b, c, d))
+    # print('The equation is {0}x + {1}y + {2}z = {3}'.format(a, b, c, d))
 
-    return [a,b,c,d]
+    return [a, b, c, d]
+
 
 # x1,y1 is the center of the first circle, with radius r1
 # x2,y2 is the center of the second ricle, with radius r2
-def intersectTwoCircles(x1,y1,r1, x2,y2,r2):
+def intersectTwoCircles(x1, y1, r1, x2, y2, r2):
     """centerdx = x1 - x2;
     centerdy = y1 - y2;
     R = np.sqrt(centerdx * centerdx + centerdy * centerdy);
@@ -52,43 +53,47 @@ def intersectTwoCircles(x1,y1,r1, x2,y2,r2):
     #print([ix1, iy1], [ix2, iy2])
     #print(np.sqrt((ix1-x1)**2+(iy1-y1)**2))"""
 
-    d=np.sqrt((x2-x1)**2 + (y2-y1)**2)
-    a=(r1**2-r2**2+d**2)/(2*d)
-    h=np.sqrt(r1**2-a**2)
-    x3=x1+a*(x2-x1)/d   
-    y3=y1+a*(y2-y1)/d   
-    ix1=x3+h*(y2-y1)/d       
-    iy1=y3-h*(x2-x1)/d  
-    ix2=x3-h*(y2-y1)/d       
-    iy2=y3+h*(x2-x1)/d     
-    #print(np.sqrt((x4-x1)**2+(y4-y1)**2))
+    d = np.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)
+    a = (r1 ** 2 - r2 ** 2 + d ** 2) / (2 * d)
+    h = np.sqrt(r1 ** 2 - a ** 2)
+    x3 = x1 + a * (x2 - x1) / d
+    y3 = y1 + a * (y2 - y1) / d
+    ix1 = x3 + h * (y2 - y1) / d
+    iy1 = y3 - h * (x2 - x1) / d
+    ix2 = x3 - h * (y2 - y1) / d
+    iy2 = y3 + h * (x2 - x1) / d
+    # print(np.sqrt((x4-x1)**2+(y4-y1)**2))
 
     return [[ix1, iy1], [ix2, iy2]]
+
 
 # return sum of element-wise multiplication of vectors
 def scalarProduct(v1, v2):
     val = 0
-    for (a,b) in zip(v1, v2):
-        val += a*b
+    for (a, b) in zip(v1, v2):
+        val += a * b
     return val
+
 
 # return vector of p2 to p1
 def vectorize(p1, p2):
     val = []
-    for (a,b) in zip(p1, p2):
-        val.append(a-b)
+    for (a, b) in zip(p1, p2):
+        val.append(a - b)
     return val
+
 
 # return distance between 2 points
 def dist(p1, p2):
     d = 0
-    for l in vectorize(p1,p2):
-        d += l*l
+    for l in vectorize(p1, p2):
+        d += l * l
     return np.sqrt(d)
 
 
 def getSideLengthOfTrapezium(bot, top, height):
-	return np.sqrt( ((bot-top)/2)**2 + height**2)
+    return np.sqrt(((bot - top) / 2) ** 2 + height ** 2)
+
 
 def getClosestPointOnPlane(planeA, planeB, planeC, planeD, pointX, pointY, pointZ):
     # we want to find a point (pointX, pointY, pointZ)+t(planeA, planeB, planeC)
@@ -100,7 +105,7 @@ def getClosestPointOnPlane(planeA, planeB, planeC, planeD, pointX, pointY, point
     # t = (planeD - planeA*pointX - planeB*pointY - planeC*pointZ) / (planeA*planeA + planeB*planeB + planeC*planeC)
     t = (planeD - planeA * pointX - planeB * pointY - planeC * pointZ) / \
         (planeA * planeA + planeB * planeB + planeC * planeC)
-    return [pointX + t*planeA,pointY + t*planeB,pointZ + t*planeC]
+    return [pointX + t * planeA, pointY + t * planeB, pointZ + t * planeC]
 
 
 botWidth = 50
@@ -112,18 +117,18 @@ baseHeight = 5
 topLength = 5
 
 joyPanelHeight = 20
-screenPanelHeight = 30    # screen is 24*30
+screenPanelHeight = 30  # screen is 24*30
 
 thickness = 1
 
 print("Plank = 61 * 122 * 1")
 
-print("Front Base ",botWidth,"*",baseHeight)
+print("Front Base ", botWidth, "*", baseHeight)
 
-print("Joystick Panel ",botWidth,"*",joyPanelHeight)
+print("Joystick Panel ", botWidth, "*", joyPanelHeight)
 
-screenPanelSide = getSideLengthOfTrapezium(botWidth, topWidth, screenPanelHeight)               # trapezium side length
-print("Screen Panel [",botWidth,"to",topWidth,"]*",screenPanelHeight, ", side length of",screenPanelSide)
+screenPanelSide = getSideLengthOfTrapezium(botWidth, topWidth, screenPanelHeight)  # trapezium side length
+print("Screen Panel [", botWidth, "to", topWidth, "]*", screenPanelHeight, ", side length of", screenPanelSide)
 
 # find intersection of circles at point (x,y)=(0,5) with r=20 and (x,y)=(35,35) with r=30, at (19.5, 9.3)
 #              *---
@@ -132,12 +137,13 @@ print("Screen Panel [",botWidth,"to",topWidth,"]*",screenPanelHeight, ", side le
 #  ____-----X     |
 # *               |
 # |               |
-panelsIntersection = intersectTwoCircles(0,baseHeight,joyPanelHeight, length-topLength,height,screenPanelHeight)
+panelsIntersection = intersectTwoCircles(0, baseHeight, joyPanelHeight, length - topLength, height, screenPanelHeight)
 if panelsIntersection == []:
     print("Configuration invalid!")
     exit()
-panelsIntersection = panelsIntersection[0] if panelsIntersection[0][1]<panelsIntersection[1][1] else panelsIntersection[1] #pick lowest point
-if panelsIntersection[1]<baseHeight:
+panelsIntersection = panelsIntersection[0] if panelsIntersection[0][1] < panelsIntersection[1][1] else \
+panelsIntersection[1]  # pick lowest point
+if panelsIntersection[1] < baseHeight:
     print("Configuration barely invalid!")
     exit()
 
@@ -148,39 +154,45 @@ if panelsIntersection[1]<baseHeight:
 #  ____-----/\_   |
 # |            \_ |
 # |              \|
-sidePanelsIntersection = np.sqrt((length-panelsIntersection[0])**2 + panelsIntersection[1]**2)   # line between both side panels
-print("Side Bottom Panel ",length,"*",baseHeight,"*",joyPanelHeight,"*",sidePanelsIntersection,". Peak at ",panelsIntersection)
+sidePanelsIntersection = np.sqrt(
+    (length - panelsIntersection[0]) ** 2 + panelsIntersection[1] ** 2)  # line between both side panels
+print("Side Bottom Panel ", length, "*", baseHeight, "*", joyPanelHeight, "*", sidePanelsIntersection, ". Peak at ",
+      panelsIntersection)
 
 # find top panel's trapezium shape. start with getting the plane made by side top panel
-basePoint = [length,0,0]
-sidePoint = [panelsIntersection[0],panelsIntersection[1],0]
-topFrontPoint = [length-topLength,height,(topWidth-botWidth)/2]
-planeEq = getPlaneEq(basePoint, sidePoint, topFrontPoint)                   # plane formed by side top panel
-topBackPoint = [length,height,(planeEq[3]-planeEq[0]*length-planeEq[1]*height)/planeEq[2]]
-topBackWidth = botWidth+topBackPoint[2]*2
-topPanelSide = getSideLengthOfTrapezium(topWidth, topBackWidth, topLength)              # trapezium side length
-print("Top Panel [",topWidth,"to",topBackWidth,"] *",topLength, "side length of",topPanelSide)
+basePoint = [length, 0, 0]
+sidePoint = [panelsIntersection[0], panelsIntersection[1], 0]
+topFrontPoint = [length - topLength, height, (topWidth - botWidth) / 2]
+planeEq = getPlaneEq(basePoint, sidePoint, topFrontPoint)  # plane formed by side top panel
+topBackPoint = [length, height, (planeEq[3] - planeEq[0] * length - planeEq[1] * height) / planeEq[2]]
+topBackWidth = botWidth + topBackPoint[2] * 2
+topPanelSide = getSideLengthOfTrapezium(topWidth, topBackWidth, topLength)  # trapezium side length
+print("Top Panel [", topWidth, "to", topBackWidth, "] *", topLength, "side length of", topPanelSide)
 
+sideTopPanelBack = np.sqrt(
+    height ** 2 + ((botWidth - topBackWidth) / 2) ** 2)  # line between side top panel and back wall
+angle = np.arccos(scalarProduct(vectorize(basePoint, sidePoint), vectorize(basePoint, topBackPoint)) / (
+sideTopPanelBack * sidePanelsIntersection))  # *180/math.pi
+sidePoint2d = [sidePanelsIntersection * np.cos(angle), sidePanelsIntersection * np.sin(angle)]
+sideCorner2d = intersectTwoCircles(sidePoint2d[0], sidePoint2d[1], screenPanelSide, sideTopPanelBack, 0, topPanelSide)
+sideCorner2d = sideCorner2d[0] if sideCorner2d[0][1] > sideCorner2d[1][1] else sideCorner2d[1]  # pick highest point
+print("Side Top Panel ", sideTopPanelBack, "*", sidePanelsIntersection, "*", screenPanelSide, "*", topPanelSide,
+      ". Peaks at ", sidePoint2d, "and", sideCorner2d)
 
-sideTopPanelBack = np.sqrt(height**2+((botWidth-topBackWidth)/2)**2)                         # line between side top panel and back wall
-angle = np.arccos(scalarProduct(vectorize(basePoint,sidePoint), vectorize(basePoint,topBackPoint))/(sideTopPanelBack*sidePanelsIntersection)) #*180/math.pi
-sidePoint2d = [sidePanelsIntersection*np.cos(angle), sidePanelsIntersection*np.sin(angle)]
-sideCorner2d = intersectTwoCircles(sidePoint2d[0],sidePoint2d[1],screenPanelSide, sideTopPanelBack,0,topPanelSide)
-sideCorner2d = sideCorner2d[0] if sideCorner2d[0][1]>sideCorner2d[1][1] else sideCorner2d[1] #pick highest point
-print("Side Top Panel ",sideTopPanelBack,"*",sidePanelsIntersection,"*",screenPanelSide,"*",topPanelSide,". Peaks at ",sidePoint2d,"and",sideCorner2d)
-
-baseOutPoint = [length,0,-thickness]
-pointInPlane = getClosestPointOnPlane(planeEq[0],planeEq[1],planeEq[2],planeEq[3],
-                                      baseOutPoint[0],baseOutPoint[1],baseOutPoint[2])     # get point in plane closest to baseOutPoint
-dist1 = dist(basePoint, pointInPlane)                           # get distance of basePoint to pointInPlane
-dist2 = dist(sidePoint, pointInPlane)                           # get distance of sidePoint to pointInPlane
-baseOutPoint2d = intersectTwoCircles(0,0,dist1, sidePoint2d[0],sidePoint2d[1],dist2)[0]
-print("    The first peak and bottom-right corner have a disjoint of ",baseOutPoint2d,"to account for thickness in a rotated plane")
-#Front Base  rectangle 50 * 5
-#Joystick Panel  rectangle 50 * 20
-#Screen Panel trapezium [ 50 to 35 ]* 30 , side length of 30.9232921921
-#Top Panel  rectangle 35 * 5
-#Side Bottom Panel  (base, clockwise) 40 * 5 * 20 * 22.4779188619 . 
+baseOutPoint = [length, 0, -thickness]
+pointInPlane = getClosestPointOnPlane(planeEq[0], planeEq[1], planeEq[2], planeEq[3],
+                                      baseOutPoint[0], baseOutPoint[1],
+                                      baseOutPoint[2])  # get point in plane closest to baseOutPoint
+dist1 = dist(basePoint, pointInPlane)  # get distance of basePoint to pointInPlane
+dist2 = dist(sidePoint, pointInPlane)  # get distance of sidePoint to pointInPlane
+baseOutPoint2d = intersectTwoCircles(0, 0, dist1, sidePoint2d[0], sidePoint2d[1], dist2)[0]
+print("    The first peak and bottom-right corner have a disjoint of ", baseOutPoint2d,
+      "to account for thickness in a rotated plane")
+# Front Base  rectangle 50 * 5
+# Joystick Panel  rectangle 50 * 20
+# Screen Panel trapezium [ 50 to 35 ]* 30 , side length of 30.9232921921
+# Top Panel  rectangle 35 * 5
+# Side Bottom Panel  (base, clockwise) 40 * 5 * 20 * 22.4779188619 .
 #    Peak at  [19.533561785152958, 9.294177917321548]
-#Side Top Panel  (base, clockwise) 22.4779188619 * 30.9232921921 * 5 * 35.7945526582 . 
+# Side Top Panel  (base, clockwise) 22.4779188619 * 30.9232921921 * 5 * 35.7945526582 .
 #    Peaks at  [9.0878696044219591, 20.558877946376406] and [34.65799234194052, 4.8691098413904044]

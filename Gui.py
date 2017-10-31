@@ -5,8 +5,9 @@ from RunGame import Game
 
 
 class GameFrame(Frame):
-    def __init__(self, parent, game_name):
-        Frame.__init__(self, parent, width=250, height=400, background="#ffffff")
+    def __init__(self, parent, game_name, w):
+        h = w*1.4
+        Frame.__init__(self, parent, width=w, height=h, background="#ffffff")
         self.pack_propagate(0)
 
         self.game_id = game_name
@@ -14,7 +15,7 @@ class GameFrame(Frame):
             self.title = Label(self, text=f.readline(), background="#ffffff", foreground="#000000")
 
         image = Image.open("./GameConfigs/" + game_name + ".jpg")
-        ratio_x, ratio_y = 240 / image.width, 375 / image.height
+        ratio_x, ratio_y = (w-10) / image.width, (h-45) / image.height
         ratio = ratio_x if ratio_x < ratio_y else ratio_y
         self.photo = ImageTk.PhotoImage(
             image.resize((math.floor(image.width * ratio), math.floor(image.height * ratio)), Image.ANTIALIAS))
@@ -44,15 +45,13 @@ class Application(Frame):
 
         self.game_widgets = []
         self.cols = 5
-        self.create_widgets(self.frame, games_list)
+        self.create_widgets(self.frame, games_list, parent.winfo_screenwidth()/self.cols)
         self.selected_gf = 0
         self.set_selected()
 
-        self.root.after(5000, self.quit)
-
-    def create_widgets(self, root, games_list):
+    def create_widgets(self, root, games_list, w):
         for i, game in enumerate(games_list):
-            gf = GameFrame(root, game)
+            gf = GameFrame(root, game, w)
             gf.grid(column=i % self.cols, row=math.floor(i / self.cols))
             self.game_widgets.append(gf)
 
@@ -89,7 +88,7 @@ class Application(Frame):
             len(self.game_widgets) - self.cols + col
         self.set_selected()
 
-    def quit(self, event):
+    def quit_del(self, event):
         self.root.destroy()
 
     def clear_selected(self):

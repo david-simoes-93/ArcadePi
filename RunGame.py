@@ -5,6 +5,8 @@ import signal
 from pynput import keyboard
 from pynput.keyboard import Key, Controller
 from shutil import copyfile, move
+from tkinter import *
+from Gui2 import Application
 
 
 def press(keyboard_, key_val):
@@ -124,10 +126,22 @@ class Game:
     def start_game(self):
         print("Launching game", self.id)
 
+        """root = Tk()
+        w, h = root.winfo_screenwidth(), root.winfo_screenheight()
+        #root.attributes('-fullscreen', True)
+        root.geometry("%dx%d+0+0" % (w, h))
+
+        app = Application(root)
+        root.bind("<Delete>", app.quit_del)
+        root.focus_set()
+
+        root.mainloop()"""
+
         # Start QJoypad
         move(self.cwd + '/GameConfigs/' + self.id + '.lyt_', '/home/david/.qjoypad3/' + self.id + '.lyt')
-        cmd = ['qjoypad '+self.id]
-        p_joypad = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True, preexec_fn=os.setsid)
+        cmd = ['qjoypad ' + self.id]
+        p_joypad = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE,
+                                    shell=True, preexec_fn=os.setsid)
 
         # Start game
         print(self.cwd + '/Games/' + self.id + '/' + self.game_path)
