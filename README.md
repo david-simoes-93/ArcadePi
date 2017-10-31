@@ -13,7 +13,7 @@ If you plan on using Arcade controls, start by installing [QJoyPad 4.1.0](http:/
     make
     sudo make install
     
-Next, get the emulators. Currently, we are only using RetroPie' DosBox, but there are instructions for Mame here too:
+Next, get the emulators. Currently, we are only using RetroPie's DosBox, but there are instructions for Mame here too:
     
     sudo apt install libsdl1.2-dev automake libsdl2-ttf-dev
     
@@ -36,7 +36,7 @@ Next, get the emulators. Currently, we are only using RetroPie' DosBox, but ther
     sudo make install
     
     
-If you're using Raspberry Pi, then overclock it
+If you're using Raspberry Pi, I suggest overclock it (although I don't take responsability if it melts)
 
     echo "performance" |sudo tee /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
     vim /boot/config.txt
@@ -47,7 +47,7 @@ If you're using Raspberry Pi, then overclock it
         temp_limit=80
         gpu_mem=128
     
-Get and configure this repository
+Get and configure this repository for your username (`pi` in this case) and for your controllers (in my case, changing Axis 4 to Axis 2)
 
     cd
     git clone https://github.com/bluemoon93/ArcadePi/
@@ -55,12 +55,15 @@ Get and configure this repository
     sed -i 's/Axis 4/Axis 2/g' GameConfigs/*.lyt
     sed -i 's/david/pi/g' RunGame.py
     
+If desired, set things to run at start-up
+    
     cd
     vim start_game.sh
         #!/bin/bash
         cd /home/pi/ArcadePi
         python3 Arcade.py
-    vim ~/.config/autostart/start_arcade
+    chmod +x start_game.sh
+    vim ~/.config/autostart/start_arcade.desktop
         [Desktop Entry]
         Name=start_arcade
         Exec=/home/pi/start_game.sh
