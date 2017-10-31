@@ -1,7 +1,7 @@
 from tkinter import *
 from PIL import Image, ImageTk
 import math
-from RunGame import Game
+from RunGame import Game, set_gui_controller, kill_gui_controller
 
 
 class GameFrame(Frame):
@@ -49,6 +49,8 @@ class Application(Frame):
         self.selected_gf = 0
         self.set_selected()
 
+        self.qjoypad = set_gui_controller(self.key_values)
+
     def create_widgets(self, root, games_list, w):
         for i, game in enumerate(games_list):
             gf = GameFrame(root, game, w)
@@ -60,7 +62,9 @@ class Application(Frame):
         self.canvas.configure(scrollregion=self.canvas.bbox("all"))
 
     def key(self, event):
+        kill_gui_controller(self.qjoypad)
         Game(self.game_widgets[self.selected_gf].game_id, self.key_values).start_game()
+        self.qjoypad = set_gui_controller(self.key_values)
 
     def right(self, event):
         self.clear_selected()
@@ -89,6 +93,7 @@ class Application(Frame):
         self.set_selected()
 
     def quit_del(self, event):
+        kill_gui_controller(self.qjoypad)
         self.root.destroy()
 
     def clear_selected(self):

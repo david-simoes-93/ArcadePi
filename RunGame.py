@@ -103,25 +103,7 @@ class Game:
 
         self.game_config_lines = game_config_lines[3:]
 
-        # when game is launched, read lyt and replace %key by value based on dictionary
-        with open('./GameConfigs/' + self.id + '.lyt_', "w") as processed_lyt:
-            with open('./GameConfigs/' + self.id + '.lyt') as lyt:
-                for line in lyt:
-                    while "%" in line:
-                        try:
-                            first_index = line.index("%")
-                            next_space = line[first_index:].find(" ")
-                            next_space = next_space if next_space != -1 else len(line)
-                            next_comma = line[first_index:].find(",")
-                            next_comma = next_comma if next_comma != -1 else len(line)
-                            second_index = first_index + min(next_comma, next_space)
-                            key_val = self.keymaps[line[first_index + 1:second_index].strip()]
-                            line = line[0:first_index] + key_val + \
-                                   (line[second_index:] if line[second_index:] != '' else '\n')
-                        except:
-                            print("Key not recognized:", "-" + line[first_index + 1:second_index] + "-")
-                    # print(line)
-                    processed_lyt.write(line)
+        process_lyt('./GameConfigs/' + self.id + '.lyt', self.keymaps)
 
     def start_game(self):
         print("Launching game", self.id)
@@ -177,3 +159,38 @@ class Game:
         # http://xmodulo.com/how-to-checkpoint-and-restore-linux-process.html
         # https://criu.org/Installation
         pass
+
+
+def set_gui_controller(keymaps):
+    process_lyt(os.getcwd() + '/Gui.lyt', keymaps)
+    move(os.getcwd() + '/Gui.lyt_', '/home/david/.qjoypad3/Gui.lyt')
+    cmd = ['qjoypad Gui']
+    p_joypad = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE,
+                                shell=True, preexec_fn=os.setsid)
+    return p_joypad
+
+
+def kill_gui_controller(p_joypad):
+    os.killpg(os.getpgid(p_joypad.pid), signal.SIGTERM)
+
+
+def process_lyt(path, keymaps):
+    # when game is launched, read lyt and replace %key by value based on dictionary
+    with open(path+'_', "w") as processed_lyt:
+        with open(path) as lyt:
+            for line in lyt:
+                while "%" in line:
+                    try:
+                        first_index = line.index("%")
+                        next_space = line[first_index:].find(" ")
+                        next_space = next_space if next_space != -1 else len(line)
+                        next_comma = line[first_index:].find(",")
+                        next_comma = next_comma if next_comma != -1 else len(line)
+                        second_index = first_index + min(next_comma, next_space)
+                        key_val = keymaps[line[first_index + 1:second_index].strip()]
+                        line = line[0:first_index] + key_val + \
+                               (line[second_index:] if line[second_index:] != '' else '\n')
+                    except:
+                        print("Key not recognized:", "-" + line[first_index + 1:second_index] + "-")
+                # print(line)
+                processed_lyt.write(line)
