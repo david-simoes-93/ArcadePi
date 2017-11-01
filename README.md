@@ -53,17 +53,20 @@ Get and configure this repository for your username (`pi` in this case) and for 
     git clone https://github.com/bluemoon93/ArcadePi/
     cd ArcadePi
     sed -i 's/Axis 4/Axis 2/g' GameConfigs/*.lyt
+    sed -i 's/Axis 4/Axis 2/g' Gui.lyt
     sed -i 's/david/pi/g' RunGame.py
     
 If desired, set things to run at start-up
     
     cd
+    sudo apt install xautomation
     vim start_game.sh
         #!/bin/bash
+        xte 'mousermove 1000 1000'
         cd /home/pi/ArcadePi
         python3 Arcade.py
-    chmod +x start_game.sh
-    vim ~/.config/autostart/start_arcade.desktop
+    chmod +x start_game.sh 
+    vim ~/.config/autostart/start_arcade.desktop
         [Desktop Entry]
         Name=start_arcade
         Exec=/home/pi/start_game.sh
