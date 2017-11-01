@@ -1,5 +1,5 @@
 # ArcadePi
-A system to play MS-DOS, Sega, Win98 or any other videogame using arcade controllers and a DYI arcade station!
+A system to play MS-DOS, Sega, Win98, GameBoy, or any other videogame using arcade controllers and a DYI arcade station!
 
 If you plan on using Arcade controls, start by installing [QJoyPad 4.1.0](http://qjoypad.sourceforge.net/#download). 
 
@@ -13,7 +13,7 @@ If you plan on using Arcade controls, start by installing [QJoyPad 4.1.0](http:/
     make
     sudo make install
     
-Next, get the emulators. Currently, we are only using RetroPie's DosBox, but there are instructions for Mame here too:
+Next, get the emulators. Currently, we are only using RetroPie's [DosBox](https://www.dosbox.com/), but there are instructions for RetroPie's [Mame](http://mamedev.org/) and [VisualByAdvance](https://sourceforge.net/projects/vba/) here too:
     
     sudo apt install libsdl1.2-dev automake libsdl2-ttf-dev
     
@@ -32,6 +32,17 @@ Next, get the emulators. Currently, we are only using RetroPie's DosBox, but the
         #define C_DYNREC 1
         #define C_TARGETCPU ARMV7LE
         #define C_UNALIGNED_MEMORY 1
+    make -j4
+    sudo make install
+    
+    cd
+    git clone https://github.com/x3ro/VisualBoyAdvance
+    cd VisualBoyAdvance
+    ./configure
+    vim src/prof/Prof.cpp    # line 274
+        profWrite32(fd, atoi(seg->tos[toindex].selfpc)) ||
+    vim src/Util.cpp         # line 995
+        utilGzWriteFunc = (int (ZEXPORT *)(gzFile_s *,void * const, unsigned int))gzwrite;
     make -j4
     sudo make install
     
