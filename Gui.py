@@ -2,56 +2,66 @@ from tkinter import *
 from PIL import Image, ImageTk
 import math
 from RunGame import Game, set_gui_controller, kill_gui_controller
+#from time import sleep, time
 
 
 class GameFrame(Frame):
     def __init__(self, parent, game_name, w):
-        h = w*1.4
-        Frame.__init__(self, parent, width=w, height=h, background="#ffffff")
+        h = w * 1.4
+        Frame.__init__(self, parent, width=w, height=h, background="#000000")
         self.pack_propagate(0)
 
-        self.game_id = game_name
-        with open("./GameConfigs/" + game_name + ".conf", 'r') as f:
-            self.title = Label(self, text=f.readline(), background="#ffffff", foreground="#000000")
+        if game_name != "":
+            self.game_id = game_name
+            with open("./GameConfigs/" + game_name + ".conf", 'r') as f:
+                self.title = Label(self, text=f.readline(), background="#000000", foreground="#00ff00")
 
-        image = Image.open("./GameConfigs/" + game_name + ".jpg")
-        ratio_x, ratio_y = (w-10) / image.width, (h-45) / image.height
-        ratio = ratio_x if ratio_x < ratio_y else ratio_y
-        self.photo = ImageTk.PhotoImage(
-            image.resize((math.floor(image.width * ratio), math.floor(image.height * ratio)), Image.ANTIALIAS))
-        self.photo_container = Label(self, image=self.photo)
+            image = Image.open("./GameConfigs/" + game_name + ".jpg")
+            ratio_x, ratio_y = (w - 10) / image.width, (h - 45) / image.height
+            ratio = ratio_x if ratio_x < ratio_y else ratio_y
+            self.photo = ImageTk.PhotoImage(
+                image.resize((math.floor(image.width * ratio), math.floor(image.height * ratio)), Image.ANTIALIAS))
+            self.photo_container = Label(self, image=self.photo)
 
-        self.title.pack(side="top")
-        self.photo_container.pack()
+            self.title.pack(side="top")
+            self.photo_container.pack()
+        else:
+            self.title = Label(self, text="")
+            self.game_id = None
 
 
 class Application(Frame):
     def __init__(self, parent, games_list, key_values):
-        Frame.__init__(self, parent)
+        Frame.__init__(self, parent, background="#000000")
         self.root = parent
         self.key_values = key_values
         self.pack()
 
-        self.canvas = Canvas(self, width=1280, height=720, borderwidth=0, background="#ffffff")
-        self.vsb = Scrollbar(self, orient="vertical", command=self.canvas.yview)
+        self.canvas = Canvas(self, width=parent.winfo_screenwidth(), height=parent.winfo_screenheight(),
+                             borderwidth=0, background="#000000")
+        self.vsb = Scrollbar(self, orient="vertical", command=self.canvas.yview,
+                             background="#00ff00", troughcolor="#000000")
         self.canvas.configure(yscrollcommand=self.vsb.set)
 
         self.vsb.pack(side="right", fill="y")
         self.canvas.pack(side="left")
 
-        self.frame = Frame(self.canvas, background="#ffffff")
+        self.frame = Frame(self.canvas, background="#000000")
         self.canvas.create_window((0, 0), window=self.frame, anchor="nw", tags="self.frame")
         self.frame.bind("<Configure>", self.on_frame_configure)
 
         self.game_widgets = []
         self.cols = 5
-        self.create_widgets(self.frame, games_list, parent.winfo_screenwidth()/self.cols)
+        self.create_widgets(self.frame, games_list, parent.winfo_screenwidth() / self.cols)
         self.selected_gf = 0
         self.set_selected()
 
         self.qjoypad = set_gui_controller(self.key_values)
 
     def create_widgets(self, root, games_list, w):
+        while len(games_list)%self.cols != 0:
+            games_list.append("")
+
         for i, game in enumerate(games_list):
             gf = GameFrame(root, game, w)
             gf.grid(column=i % self.cols, row=math.floor(i / self.cols))
@@ -62,6 +72,9 @@ class Application(Frame):
         self.canvas.configure(scrollregion=self.canvas.bbox("all"))
 
     def key(self, event):
+        if self.game_widgets[self.selected_gf].game_id == None:
+            return
+
         kill_gui_controller(self.qjoypad)
         Game(self.game_widgets[self.selected_gf].game_id, self.key_values).start_game()
         self.qjoypad = set_gui_controller(self.key_values)
@@ -97,10 +110,10 @@ class Application(Frame):
         self.root.destroy()
 
     def clear_selected(self):
-        self.game_widgets[self.selected_gf].configure(background="#ffffff")
-        self.game_widgets[self.selected_gf].title.configure(background="#ffffff", foreground="#000000")
+        self.game_widgets[self.selected_gf].configure(background="#000000")
+        self.game_widgets[self.selected_gf].title.configure(background="#000000", foreground="#00ff00")
 
     def set_selected(self):
-        self.game_widgets[self.selected_gf].configure(background="#000000")
-        self.game_widgets[self.selected_gf].title.configure(background="#000000", foreground="#ffffff")
-        self.canvas.yview_moveto((self.selected_gf-self.selected_gf % self.cols)/len(self.game_widgets))
+        self.game_widgets[self.selected_gf].configure(background="#00ff00")
+        self.game_widgets[self.selected_gf].title.configure(background="#00ff00", foreground="#000000")
+        self.canvas.yview_moveto((self.selected_gf - self.selected_gf % self.cols - self.cols) / len(self.game_widgets))

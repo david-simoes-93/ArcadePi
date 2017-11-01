@@ -93,22 +93,16 @@ print(games_list)
 
 root = Tk()
 w, h = root.winfo_screenwidth(), root.winfo_screenheight()
-#root.attributes('-fullscreen', True)
+root.attributes('-fullscreen', True)
 root.geometry("%dx%d+0+0" % (w, h))
 
 app = Application(root, games_list, key_values)
-root.bind("<Return>", app.key)
+root.bind("<KeyRelease-Return>", app.key)
 root.bind("<Up>", app.up)
 root.bind("<Down>", app.down)
 root.bind("<Left>", app.left)
 root.bind("<Right>", app.right)
-root.bind("<Delete>", app.quit_del)
+root.bind("<KeyRelease-Delete>", app.quit_del)
 root.focus_set()
 
 root.mainloop()
-
-"""while True:
-    print("Pick a Game:")
-    print([f[:-5] for f in listdir("GameConfigs") if isfile(join("GameConfigs", f))
-           and f.endswith(".conf") and f!="default.conf"])
-    Game(input(""), key_values).start_game()"""

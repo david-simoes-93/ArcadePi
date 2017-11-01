@@ -171,6 +171,7 @@ def set_gui_controller(keymaps):
 
 
 def kill_gui_controller(p_joypad):
+    time.sleep(0.5)
     os.killpg(os.getpgid(p_joypad.pid), signal.SIGTERM)
 
 
