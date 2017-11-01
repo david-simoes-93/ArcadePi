@@ -15,7 +15,7 @@ If you plan on using Arcade controls, start by installing [QJoyPad 4.1.0](http:/
     
 Next, get the emulators. Currently, we are only using RetroPie's [DosBox](https://www.dosbox.com/), but there are instructions for RetroPie's [Mame](http://mamedev.org/) and [VisualByAdvance](https://sourceforge.net/projects/vba/) here too:
     
-    sudo apt install libsdl1.2-dev automake libsdl2-ttf-dev
+    sudo apt install libsdl1.2-dev automake libsdl2-ttf-dev libsndfile1-dev
     
     cd
     git clone https://github.com/RetroPie/mame4all-pi
@@ -43,6 +43,15 @@ Next, get the emulators. Currently, we are only using RetroPie's [DosBox](https:
         profWrite32(fd, atoi(seg->tos[toindex].selfpc)) ||
     vim src/Util.cpp         # line 995
         utilGzWriteFunc = (int (ZEXPORT *)(gzFile_s *,void * const, unsigned int))gzwrite;
+    make -j4
+    sudo make install
+    
+    cd
+    wget https://mednafen.github.io/releases/files/mednafen-0.9.48.tar.xz
+    tar xvf megnafen-0.9.48.tar.xz
+    cd megnafen
+    ./autogen.sh
+    ./configure
     make -j4
     sudo make install
     
