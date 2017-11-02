@@ -46,6 +46,7 @@ Next, get the emulators. Currently, we are only using RetroPie's [DosBox](https:
     sed -i 's/13+alt/120/g' ~/.mednafen/*.cfg
     sed -i 's/sound.device default/sound.device sexyal-literal-default/g' ~/.mednafen/*.cfg
     sed -i 's/sound.driver default/sound.driver sdl/g' ~/.mednafen/*.cfg
+    echo "flash 128" > ~/.mednafen/sav/Pokemon - Emerald Version (USA, Europe).type
     
     cd
     git clone https://github.com/RetroPie/mame4all-pi
