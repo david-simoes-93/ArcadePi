@@ -13,14 +13,9 @@ If you plan on using Arcade controls, start by installing [QJoyPad 4.1.0](http:/
     make
     sudo make install
     
-Next, get the emulators. Currently, we are only using RetroPie's [DosBox](https://www.dosbox.com/), but there are instructions for RetroPie's [Mame](http://mamedev.org/) and [VisualByAdvance](https://sourceforge.net/projects/vba/) here too:
+Next, get the emulators. Currently, we are only using RetroPie's [DosBox](https://www.dosbox.com/) and [Mednafen](https://mednafen.github.io/), but there are instructions for RetroPie's [Mame](http://mamedev.org/) too:
     
     sudo apt install libsdl1.2-dev automake libsdl2-ttf-dev libsndfile1-dev
-    
-    cd
-    git clone https://github.com/RetroPie/mame4all-pi
-    cd mame4all-pi
-    make -j4
     
     cd
     wget https://files.retropie.org.uk/archives/dosbox-r3876.tar.gz
@@ -36,17 +31,6 @@ Next, get the emulators. Currently, we are only using RetroPie's [DosBox](https:
     sudo make install
     
     cd
-    git clone https://github.com/x3ro/VisualBoyAdvance
-    cd VisualBoyAdvance
-    ./configure
-    vim src/prof/Prof.cpp    # line 274
-        profWrite32(fd, atoi(seg->tos[toindex].selfpc)) ||
-    vim src/Util.cpp         # line 995
-        utilGzWriteFunc = (int (ZEXPORT *)(gzFile_s *,void * const, unsigned int))gzwrite;
-    make -j4
-    sudo make install
-    
-    cd
     wget https://mednafen.github.io/releases/files/mednafen-0.9.48.tar.xz
     tar xvf megnafen-0.9.48.tar.xz
     cd megnafen
@@ -54,9 +38,21 @@ Next, get the emulators. Currently, we are only using RetroPie's [DosBox](https:
     ./configure
     make -j4
     sudo make install
+    sed -i 's/259/110/g' ~/.mednafen/*.cfg
+    sed -i 's/258/109/g' ~/.mednafen/*.cfg
+    sed -i 's/261/111/g' ~/.mednafen/*.cfg
+    sed -i 's/262/112/g' ~/.mednafen/*.cfg
+    sed -i 's/96/122/g' ~/.mednafen/*.cfg
+    sed -i 's/13+alt/120/g' ~/.mednafen/*.cfg
+    sed -i 's/sound.device default/sound.device sexyal-literal-default/g' ~/.mednafen/*.cfg
+    sed -i 's/sound.driver default/sound.driver sdl/g' ~/.mednafen/*.cfg
     
+    cd
+    git clone https://github.com/RetroPie/mame4all-pi
+    cd mame4all-pi
+    make -j4
     
-If you're using Raspberry Pi, I suggest overclock it (although I don't take responsability if it melts)
+If you're using Raspberry Pi, I suggest overclocking it (although I don't take responsability if it melts)
 
     echo "performance" |sudo tee /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
     vim /boot/config.txt
