@@ -2,7 +2,7 @@ from tkinter import *
 from PIL import Image, ImageTk
 import math
 from RunGame import Game, set_gui_controller, kill_gui_controller
-from time import sleep, time
+from time import sleep
 
 
 class GameFrame(Frame):
