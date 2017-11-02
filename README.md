@@ -32,7 +32,7 @@ Next, get the emulators. Currently, we are only using RetroPie's [DosBox](https:
     
     cd
     wget https://mednafen.github.io/releases/files/mednafen-0.9.48.tar.xz
-    tar xvf megnafen-0.9.48.tar.xz
+    tar xvf mednafen-0.9.48.tar.xz
     cd megnafen
     ./autogen.sh
     ./configure
