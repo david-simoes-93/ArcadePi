@@ -127,8 +127,13 @@ class Game:
 
         # Start game
         print(self.cwd + '/Games/' + self.id + '/' + self.game_path)
-        cmd = ['dosbox', self.cwd + '/Games/' + self.id + '/' + self.game_path, '-conf',
-               self.cwd + '/DosboxConfigs/' + self.config_file]
+        if "dosbox" in self.config_file:
+            cmd = ['dosbox', self.cwd + '/Games/DOS/' + self.id + '/' + self.game_path, '-conf',
+                   self.cwd + '/EmuConfigs/' + self.config_file]
+        elif "mednafen" in self.config_file:
+            cmd = ['mednafen', self.cwd + '/Games/GBA/' + self.game_path.replace(" ", " ")]
+        else:
+            cmd = self.config_file.split(" ")
         print("Running ", cmd)
         game = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
 

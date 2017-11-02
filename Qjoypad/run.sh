@@ -1,1 +1,0 @@
-./qjoypad --notray

@@ -94,6 +94,8 @@ print(games_list)
 root = Tk()
 w, h = root.winfo_screenwidth(), root.winfo_screenheight()
 root.attributes('-fullscreen', True)
+root.attributes("-topmost", True)
+root.resizable(width=False, height=False)
 root.geometry("%dx%d+0+0" % (w, h))
 
 app = Application(root, games_list, key_values)
