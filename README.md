@@ -38,7 +38,7 @@ Next, get the emulators. Currently, we are only using RetroPie's [DosBox](https:
     ./configure
     make -j4
     sudo make install
-    sed -i 's/259/110/g' ~/.mednafen/*.cfg
+    sed -i 's/259/110/g' ~/.mednafen/*.cfg
     sed -i 's/258/109/g' ~/.mednafen/*.cfg
     sed -i 's/261/111/g' ~/.mednafen/*.cfg
     sed -i 's/262/112/g' ~/.mednafen/*.cfg
