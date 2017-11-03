@@ -16,10 +16,10 @@ class GameFrame(Frame):
             with open("./GameConfigs/" + game_name + ".conf", 'r') as f:
                 title = f.readline()
                 fields = title.split(":")
-                if len(fields)==2:
-                    title = fields[0]+":\n"+fields[1]
+                if len(fields) == 2:
+                    title = fields[0] + ":\n" + fields[1]
                 else:
-                    title = "\n"+title
+                    title = "\n" + title
                 self.title = Label(self, text=title, background="#000000", foreground="#00ff00")
 
             image = Image.open("./GameConfigs/" + game_name + ".jpg")
@@ -30,7 +30,6 @@ class GameFrame(Frame):
             self.photo_container = Label(self, image=self.photo)
 
             self.title.pack(side="top")
-
             self.photo_container.pack()
         else:
             self.title = Label(self, text="")
@@ -59,14 +58,14 @@ class Application(Frame):
 
         self.game_widgets = []
         self.cols = 5
-        self.create_widgets(self.frame, games_list, (parent.winfo_screenwidth()-10) / self.cols)
+        self.create_widgets(self.frame, games_list, (parent.winfo_screenwidth() - 10) / self.cols)
         self.selected_gf = 0
         self.set_selected()
 
         self.qjoypad = set_gui_controller(self.key_values)
 
     def create_widgets(self, root, games_list, w):
-        while len(games_list)%self.cols != 0:
+        while len(games_list) % self.cols != 0:
             games_list.append("")
 
         for i, game in enumerate(games_list):
@@ -126,4 +125,5 @@ class Application(Frame):
     def set_selected(self):
         self.game_widgets[self.selected_gf].configure(background="#00ff00")
         self.game_widgets[self.selected_gf].title.configure(background="#00ff00", foreground="#000000")
-        self.canvas.yview_moveto((self.selected_gf - self.selected_gf % self.cols - self.cols/2) / len(self.game_widgets))
+        self.canvas.yview_moveto(
+            (self.selected_gf - self.selected_gf % self.cols - self.cols / 2) / len(self.game_widgets))

@@ -5,6 +5,7 @@ import signal
 from pynput import keyboard
 from pynput.keyboard import Key, Controller
 from shutil import copyfile, move
+import pwd
 from tkinter import *
 from Gui2 import Application
 
@@ -120,7 +121,7 @@ class Game:
         root.mainloop()"""
 
         # Start QJoypad
-        move(self.cwd + '/GameConfigs/' + self.id + '.lyt_', '/home/david/.qjoypad3/' + self.id + '.lyt')
+        move(self.cwd + '/GameConfigs/' + self.id + '.lyt_', '/home/'+pwd.getpwuid(os.getuid())[0]+'/.qjoypad3/' + self.id + '.lyt')
         cmd = ['qjoypad ' + self.id]
         p_joypad = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE,
                                     shell=True, preexec_fn=os.setsid)
@@ -168,7 +169,7 @@ class Game:
 
 def set_gui_controller(keymaps):
     process_lyt(os.getcwd() + '/Gui.lyt', keymaps)
-    move(os.getcwd() + '/Gui.lyt_', '/home/david/.qjoypad3/Gui.lyt')
+    move(os.getcwd() + '/Gui.lyt_', '/home/'+pwd.getpwuid(os.getuid())[0]+'/.qjoypad3/Gui.lyt')
     cmd = ['qjoypad Gui']
     p_joypad = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE,
                                 shell=True, preexec_fn=os.setsid)
