@@ -71,7 +71,6 @@ Get and configure this repository for your username (`pi` in this case) and for 
     cd ArcadePi
     sed -i 's/Axis 4/Axis 2/g' GameConfigs/*.lyt
     sed -i 's/Axis 4/Axis 2/g' Gui.lyt
-    sed -i 's/david/pi/g' RunGame.py
     
 If desired, set things to run at start-up
     
