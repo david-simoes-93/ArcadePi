@@ -13,9 +13,9 @@ If you plan on using Arcade controls, start by installing [QJoyPad 4.1.0](http:/
     make
     sudo make install
     
-Next, get the emulators. Currently, we are only using RetroPie's [DosBox](https://www.dosbox.com/) and [Mednafen](https://mednafen.github.io/), but there are instructions for RetroPie's [Mame](http://mamedev.org/) too:
+Next, get the emulators. Currently, we are only using [DosBox](https://www.dosbox.com/), [Gambatte](https://github.com/sinamas/gambatte), and [gameplaySP](https://github.com/gizmo98/gpsp), but there are instructions for RetroPie's [Mame](http://mamedev.org/) and [Mednafen](https://mednafen.github.io/) too:
     
-    sudo apt install libsdl1.2-dev automake libsdl2-ttf-dev libsndfile1-dev
+    sudo apt install libsdl1.2-dev automake libsdl2-ttf-dev libsndfile1-dev scons
     
     cd
     wget https://files.retropie.org.uk/archives/dosbox-r3876.tar.gz
@@ -31,6 +31,28 @@ Next, get the emulators. Currently, we are only using RetroPie's [DosBox](https:
     sudo make install
     
     cd
+    git clone https://github.com/sinamas/gambatte.git
+    cd gambatte
+    ./build_sdl.sh
+    sudo mv gambatte_sdl/gambatte_sdl /usr/bin/
+    
+    cd
+    git clone https://github.com/visualboyadvance-m/visualboyadvance-m
+    cd visualboyadvance-m
+    ./installdeps
+    mkdir build && cd build
+    cmake ..
+    make -j4`
+
+    # You can skip the next ones if you want to, we don't really use them
+    
+    cd
+    git clone https://github.com/gizmo98/gpsp.git
+    cd gpsp/raspberrypi
+    make -j4
+    sudo mv gpsp /usr/bin/
+    
+    cd
     wget https://mednafen.github.io/releases/files/mednafen-0.9.48.tar.xz
     tar xvf mednafen-0.9.48.tar.xz
     cd megnafen
@@ -38,6 +60,7 @@ Next, get the emulators. Currently, we are only using RetroPie's [DosBox](https:
     ./configure
     make -j4
     sudo make install
+    mednafen
     sed -i 's/259/110/g' ~/.mednafen/*.cfg
     sed -i 's/258/109/g' ~/.mednafen/*.cfg
     sed -i 's/261/111/g' ~/.mednafen/*.cfg
@@ -46,7 +69,7 @@ Next, get the emulators. Currently, we are only using RetroPie's [DosBox](https:
     sed -i 's/13+alt/120/g' ~/.mednafen/*.cfg
     sed -i 's/sound.device default/sound.device sexyal-literal-default/g' ~/.mednafen/*.cfg
     sed -i 's/sound.driver default/sound.driver sdl/g' ~/.mednafen/*.cfg
-    echo "flash 128" > ~/.mednafen/sav/Pokemon - Emerald Version (USA, Europe).type
+    echo "flash 128" > ~/.mednafen/sav/"Pokemon - Emerald Version (USA, Europe).type"
     
     cd
     git clone https://github.com/RetroPie/mame4all-pi
