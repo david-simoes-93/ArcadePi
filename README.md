@@ -54,7 +54,7 @@ Next, get the emulators. Currently, we are only using [DosBox](https://www.dosbo
     mv gba.bin ~/ArcadePi/gba_bios.bin
     mv ../game_config.txt ~/ArcadePi/
 
-    # You can skip the next ones if you want to, we don't really use them
+    # You can skip the next ones if you want to, we don't really use them in RaspPi. However, you can use Mednafen in 64bit Linux instead of Gambatte and GPSP (change the commands line in RunGame.py to mednafen instead of those emulators)
     
     cd
     git clone https://github.com/visualboyadvance-m/visualboyadvance-m
