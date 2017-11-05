@@ -1,14 +1,16 @@
 from tkinter import *
 from PIL import Image, ImageTk
 import math
+
+from GuiControls import GuiControls
 from RunGame import Game, set_gui_controller, kill_gui_controller
 from time import sleep
 
 
 class GameFrame(Frame):
-    def __init__(self, parent, game_name, w):
+    def __init__(self, root, game_name, w):
         h = w * 1.4
-        Frame.__init__(self, parent, width=w, height=h, background="#000000")
+        Frame.__init__(self, root, width=w, height=h, background="#000000")
         self.pack_propagate(0)
 
         if game_name != "":
@@ -37,13 +39,20 @@ class GameFrame(Frame):
 
 
 class Application(Frame):
-    def __init__(self, parent, games_list, key_values):
-        Frame.__init__(self, parent, background="#000000", cursor='none')
-        self.root = parent
+    def __init__(self, root, games_list, key_values):
+        w, h = root.winfo_screenwidth(), root.winfo_screenheight()
+        root.attributes('-fullscreen', True)
+        root.attributes("-topmost", True)
+        #root.resizable(width=False, height=False)
+        root.geometry("%dx%d+0+0" % (w, h))
+        root.configure(background='black')
+        
+        Frame.__init__(self, root, background="#000000", cursor='none')
+        self.root = root
         self.key_values = key_values
         self.pack()
 
-        self.canvas = Canvas(self, width=parent.winfo_screenwidth(), height=parent.winfo_screenheight(),
+        self.canvas = Canvas(self, width=root.winfo_screenwidth(), height=root.winfo_screenheight(),
                              borderwidth=0, background="#000000")
         self.vsb = Scrollbar(self, orient="vertical", command=self.canvas.yview,
                              background="#00ff00", troughcolor="#000000")
@@ -58,11 +67,19 @@ class Application(Frame):
 
         self.game_widgets = []
         self.cols = 5
-        self.create_widgets(self.frame, games_list, (parent.winfo_screenwidth() - 10) / self.cols)
+        self.create_widgets(self.frame, games_list, (root.winfo_screenwidth() - 10) / self.cols)
         self.selected_gf = 0
         self.set_selected()
 
         self.qjoypad = set_gui_controller(self.key_values)
+
+        root.bind("<KeyRelease-Return>", self.key)
+        root.bind("<Up>", self.up)
+        root.bind("<Down>", self.down)
+        root.bind("<Left>", self.left)
+        root.bind("<Right>", self.right)
+        root.bind("<KeyRelease-Delete>", self.quit_del)
+        root.focus_set()
 
     def create_widgets(self, root, games_list, w):
         while len(games_list) % self.cols != 0:
@@ -81,12 +98,8 @@ class Application(Frame):
         if self.game_widgets[self.selected_gf].game_id is None:
             return
 
-        kill_gui_controller(self.qjoypad)
-        Game(self.game_widgets[self.selected_gf].game_id, self.key_values).start_game()
-
-        sleep(2)
-        self.root.geometry("%dx%d+0+0" % (self.root.winfo_screenwidth(), self.root.winfo_screenheight()))
-        self.qjoypad = set_gui_controller(self.key_values)
+        gui_controls = Toplevel(self.root)
+        GuiControls(gui_controls, self)
 
     def right(self, event):
         self.clear_selected()

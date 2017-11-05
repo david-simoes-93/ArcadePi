@@ -6,8 +6,6 @@ from pynput import keyboard
 from pynput.keyboard import Key, Controller
 from shutil import copyfile, move
 import pwd
-from tkinter import *
-from Gui2 import Application
 
 
 def press(keyboard_, key_val):
@@ -109,17 +107,6 @@ class Game:
     def start_game(self):
         print("Launching game", self.id)
 
-        """root = Tk()
-        w, h = root.winfo_screenwidth(), root.winfo_screenheight()
-        #root.attributes('-fullscreen', True)
-        root.geometry("%dx%d+0+0" % (w, h))
-
-        app = Application(root)
-        root.bind("<Delete>", app.quit_del)
-        root.focus_set()
-
-        root.mainloop()"""
-
         # Start QJoypad
         move(self.cwd + '/GameConfigs/' + self.id + '.lyt_', '/home/'+pwd.getpwuid(os.getuid())[0]+'/.qjoypad3/' + self.id + '.lyt')
         cmd = ['qjoypad ' + self.id]
@@ -131,8 +118,10 @@ class Game:
         if "dosbox" in self.config_file:
             cmd = ['dosbox', self.cwd + '/Games/DOS/' + self.id + '/' + self.game_path, '-conf',
                    self.cwd + '/EmuConfigs/' + self.config_file]
-        elif "mednafen" in self.config_file:
-            cmd = ['mednafen', self.cwd + '/Games/GBA/' + self.game_path.replace(" ", " ")]
+        elif "gpsp" in self.config_file:
+            cmd = ['gpsp', self.cwd + '/Games/GBA/' + self.game_path]
+        elif "gambatte" in self.config_file:
+            cmd = ['gambatte_sdl', "-s", "5", "-f", self.cwd + '/Games/GB/' + self.game_path]
         else:
             cmd = self.config_file.split(" ")
         print("Running ", cmd)
