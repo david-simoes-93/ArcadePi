@@ -51,7 +51,7 @@ Next, get the emulators. Currently, we are only using [DosBox](https://www.dosbo
     sudo mv gpsp /usr/bin/
     wget http://mirror1.freeroms.com/gameboy_advance_roms/gba_bios.zip
     unzip gba_bios.zip
-    mv gba.bin ~/ArcadePi/gba_bios.bin
+    mv gba.bin ~/ArcadePi/gba_bios.bin
     mv ../game_config.txt ~/ArcadePi/
 
     # You can skip the next ones if you want to, we don't really use them
