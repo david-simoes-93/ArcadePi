@@ -13,9 +13,17 @@ If you plan on using Arcade controls, start by installing [QJoyPad 4.1.0](http:/
     make
     sudo make install
     
-Next, get the emulators. Currently, we are only using RetroPie's [DosBox](https://www.dosbox.com/) and [Mednafen](https://mednafen.github.io/), but there are instructions for RetroPie's [Mame](http://mamedev.org/) too:
+Get and configure this repository for your controllers (in my case, changing Axis 4 to Axis 2)
+
+    cd
+    git clone https://github.com/bluemoon93/ArcadePi/
+    cd ArcadePi
+    sed -i 's/Axis 4/Axis 2/g' GameConfigs/*.lyt
+    sed -i 's/Axis 4/Axis 2/g' Gui.lyt
     
-    sudo apt install libsdl1.2-dev automake libsdl2-ttf-dev libsndfile1-dev
+Next, get the emulators. Currently, we are only using [DosBox](https://www.dosbox.com/), [Gambatte](https://github.com/sinamas/gambatte), and [gameplaySP](https://github.com/gizmo98/gpsp), but there are instructions for [Mame](http://mamedev.org/), [VisualBoyAdvance-M](https://github.com/visualboyadvance-m/visualboyadvance-m) and [Mednafen](https://mednafen.github.io/) too:
+    
+    sudo apt install libsdl1.2-dev automake libsdl2-ttf-dev libsndfile1-dev scons
     
     cd
     wget https://files.retropie.org.uk/archives/dosbox-r3876.tar.gz
@@ -31,6 +39,32 @@ Next, get the emulators. Currently, we are only using RetroPie's [DosBox](https:
     sudo make install
     
     cd
+    git clone https://github.com/sinamas/gambatte.git
+    cd gambatte
+    ./build_sdl.sh
+    sudo mv gambatte_sdl/gambatte_sdl /usr/bin/
+    
+    cd
+    git clone https://github.com/gizmo98/gpsp.git
+    cd gpsp/raspberrypi
+    make -j4
+    sudo mv gpsp /usr/bin/
+    wget http://mirror1.freeroms.com/gameboy_advance_roms/gba_bios.zip
+    unzip gba_bios.zip
+    mv gba.bin ~/ArcadePi/gba_bios.bin
+    mv ../game_config.txt ~/ArcadePi/
+
+    # You can skip the next ones if you want to, we don't really use them
+    
+    cd
+    git clone https://github.com/visualboyadvance-m/visualboyadvance-m
+    cd visualboyadvance-m
+    ./installdeps
+    mkdir build && cd build
+    cmake ..
+    make -j4`
+    
+    cd
     wget https://mednafen.github.io/releases/files/mednafen-0.9.48.tar.xz
     tar xvf mednafen-0.9.48.tar.xz
     cd megnafen
@@ -38,6 +72,7 @@ Next, get the emulators. Currently, we are only using RetroPie's [DosBox](https:
     ./configure
     make -j4
     sudo make install
+    mednafen
     sed -i 's/259/110/g' ~/.mednafen/*.cfg
     sed -i 's/258/109/g' ~/.mednafen/*.cfg
     sed -i 's/261/111/g' ~/.mednafen/*.cfg
@@ -46,7 +81,7 @@ Next, get the emulators. Currently, we are only using RetroPie's [DosBox](https:
     sed -i 's/13+alt/120/g' ~/.mednafen/*.cfg
     sed -i 's/sound.device default/sound.device sexyal-literal-default/g' ~/.mednafen/*.cfg
     sed -i 's/sound.driver default/sound.driver sdl/g' ~/.mednafen/*.cfg
-    echo "flash 128" > ~/.mednafen/sav/Pokemon - Emerald Version (USA, Europe).type
+    echo "flash 128" > ~/.mednafen/sav/"Pokemon - Emerald Version (USA, Europe).type"
     
     cd
     git clone https://github.com/RetroPie/mame4all-pi
@@ -63,15 +98,6 @@ If you're using Raspberry Pi, I suggest overclocking it (although I don't take r
         over_voltage=5
         temp_limit=80
         gpu_mem=128
-    
-Get and configure this repository for your username (`pi` in this case) and for your controllers (in my case, changing Axis 4 to Axis 2)
-
-    cd
-    git clone https://github.com/bluemoon93/ArcadePi/
-    cd ArcadePi
-    sed -i 's/Axis 4/Axis 2/g' GameConfigs/*.lyt
-    sed -i 's/Axis 4/Axis 2/g' Gui.lyt
-    sed -i 's/david/pi/g' RunGame.py
     
 If desired, set things to run at start-up
     
@@ -91,10 +117,11 @@ If desired, set things to run at start-up
         X-GNOME-Autostart-enabled=true
 
     
-Now, download some games, put them in the Games folder (some are already configured), and, to actually run the game
+Now, download some games, put them in the Games folder (some are already configured), and, to actually run the arcade
 
     sudo pip3 install pynput
     sudo apt install python3-pil.imagetk
+    cd ~/ArcadePi
     python3 Arcade.py
 
 
