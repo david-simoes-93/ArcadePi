@@ -21,7 +21,7 @@ Get and configure this repository for your controllers (in my case, changing Axi
     sed -i 's/Axis 4/Axis 2/g' GameConfigs/*.lyt
     sed -i 's/Axis 4/Axis 2/g' Gui.lyt
     
-Next, get the emulators. Currently, we are only using [DosBox](https://www.dosbox.com/), [Gambatte](https://github.com/sinamas/gambatte), and [gameplaySP](https://github.com/gizmo98/gpsp), but there are instructions for [Mame](http://mamedev.org/), [VisualBoyAdvance-M](https://github.com/visualboyadvance-m/visualboyadvance-m) and [Mednafen](https://mednafen.github.io/) too:
+Next, get the emulators. Currently, we are only using [DosBox](https://www.dosbox.com/), [Gambatte](https://github.com/sinamas/gambatte), and [gameplaySP](https://github.com/gizmo98/gpsp), but there are instructions for [Mame](http://mamedev.org/), [VisualBoyAdvance-M](https://github.com/visualboyadvance-m/visualboyadvance-m), [mGBA](https://mgba.io/) and [Mednafen](https://mednafen.github.io/) too:
     
     sudo apt install libsdl1.2-dev automake libsdl2-ttf-dev libsndfile1-dev scons
     
@@ -55,6 +55,15 @@ Next, get the emulators. Currently, we are only using [DosBox](https://www.dosbo
     mv ../game_config.txt ~/ArcadePi/
 
     # You can skip the next ones if you want to, we don't really use them in RaspPi. However, you can use Mednafen in 64bit Linux instead of Gambatte and GPSP (change the commands line in RunGame.py to mednafen instead of those emulators)
+    
+    cd
+    wget https://github.com/mgba-emu/mgba/archive/0.6.1.tar.gz
+    tar zxvf mgba-0.6.1.tar.gz
+    cd mgba-0.6.1
+    mkdir build && cd build && cmake ..
+    make
+    sudo make install
+    sudo cp libmgba.so* /usr/lib/
     
     cd
     git clone https://github.com/visualboyadvance-m/visualboyadvance-m
