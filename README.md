@@ -47,6 +47,8 @@ Next, get the emulators. Currently, we are only using [DosBox](https://www.dosbo
     cd
     git clone https://github.com/gizmo98/gpsp.git
     cd gpsp/raspberrypi
+    vim input.c
+        # comment the cases SDL_JOYBUTTONDOWN and SDL_JOYAXISMOTION in get_gui_input() - lines 841 to 854
     make -j4
     sudo mv gpsp /usr/bin/
     wget http://mirror1.freeroms.com/gameboy_advance_roms/gba_bios.zip
