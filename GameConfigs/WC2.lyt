@@ -4,29 +4,29 @@ Joystick 1 {
 	Axis 1: +key %Right, -key %Left
 	Axis 4: +key %Down, -key %Up
 	Button 1: key %space
-	Button 2: key %Tab
-	Button 3: key %space
-	Button 4: key %Return
-	Button 5: key %plus
-	Button 8: key %BackSpace
-	Button 9: key %w
-	Button 10: key %g
-	Button 11: key %minus
+	Button 2: key %Tab		# Afterburner
+	Button 3: key %space 	# Fire Guns
+	Button 4: key %Return   # Fire Missile
+	Button 5: key %plus     # Accelerate
+	Button 8: key %BackSpace  # Full Stop
+	Button 9: key %w        # Cycle Weapons
+	Button 10: key %g       # Cycle Guns
+	Button 11: key %minus   # Decelerate
 	Button 12: key %Escape
 }
 
 Joystick 2 {
-	Axis 1: +key %Right, -key %Left
-	Axis 4: +key %Down, -key %Up
+	Axis 1: +key %F3, -key %F2   # Look
+	Axis 4: +key %F4, -key %F1
 	Button 1: key %Delete
-	Button 2: key %F2
-	Button 3: key %F1
-	Button 4: key %F3
-	Button 5: key %l
-	Button 8: key %F5
-	Button 9: key %F4
-	Button 10: key %F6
-	Button 11: key %t
+	Button 2: key %F5   	# Chase View
+	Button 3: key %F6   	# Battle View
+	Button 4: key %F7       # Tactical View
+	Button 5: key %F8       # Missile View
+	Button 8: key %j		# Jump
+	Button 9: key %t       # Cycle Targets
+	Button 10: key %l      # Lock Target
+	Button 11: key %a       # Auto-Pilot
 	Button 12: key %Return
 }
 

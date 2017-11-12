@@ -4,14 +4,14 @@ Joystick 1 {
 	Axis 1: +key %Right, -key %Left
 	Axis 4: +key %Down, -key %Up
 	Button 1: key %space
-	Button 2: key %Control_L
-	Button 3: key %Control_L
-	Button 4: key %Control_L
-	Button 5: key %Control_L
-	Button 8: key %space
-	Button 9: key %space
-	Button 10: key %Shift_L
-	Button 11: key %Shift_L
+	Button 2: key %Control_L	# Fire
+	Button 3: key %Control_L	# Fire
+	Button 4: key %Alt_L		# Strafe
+	Button 5: key %Alt_L		# Strafe
+	Button 8: key %space		# Use
+	Button 9: key %space		# Use
+	Button 10: key %Shift_R		# Sprint
+	Button 11: key %Shift_R		# Sprint
 	Button 12: key %Escape
 }
 
@@ -19,15 +19,15 @@ Joystick 2 {
 	Axis 1: +key %Right, -key %Left
 	Axis 4: +key %Down, -key %Up
 	Button 1: key %Delete
-	Button 2: key %Control_L
-	Button 3: key %Control_L
-	Button 4: key %Control_L
-	Button 5: key %Control_L
-	Button 8: key %space
-	Button 9: key %space
-	Button 10: key %Shift_L
-	Button 11: key %Shift_L
+	Button 2: key %Control_L	# Fire
+	Button 3: key %Control_L	# Fire
+	Button 4: key %Alt_L		# Strafe
+	Button 5: key %Alt_L		# Strafe
+	Button 8: key %space		# Use
+	Button 9: key %space		# Use
+	Button 10: key %Shift_R		# Sprint
+	Button 11: key %Shift_R		# Sprint
 	Button 12: key %Return
 }
 
-# arrows ctrl shift space return
+# arrows ctrl shift_r space return alt_L

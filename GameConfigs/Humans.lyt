@@ -4,14 +4,14 @@ Joystick 1 {
 	Axis 1: +key %Right, -key %Left
 	Axis 4: +key %Down, -key %Up
 	Button 1: key %space
-	Button 2: key %F1
-	Button 3: key %F2
-	Button 4: key %F3
-	Button 5: key %F4
-	Button 8: key %F9
-	Button 9: key %F10
-	Button 10: key %F11
-	Button 11: key %F12
+	Button 2: key %F1 # F1
+	Button 3: key %F2 # F2
+	Button 4: key %F3 # F3
+	Button 5: key %F4 # F4
+	Button 8: key %F9 # F9
+	Button 9: key %F10 # F10
+	Button 10: key %F11 # F11
+	Button 11: key %F12 # F12
 	Button 12: key %Escape
 }
 
@@ -19,14 +19,14 @@ Joystick 2 {
 	Axis 1: +key %Right, -key %Left
 	Axis 4: +key %Down, -key %Up
 	Button 1: key %Delete
-	Button 2: key %F5
-	Button 3: key %F6
-	Button 4: key %F7
-	Button 5: key %F8
-	Button 8: key %space
-	Button 9: key %space
-	Button 10: key %z
-	Button 11: key %z
+	Button 2: key %F5 # F5
+	Button 3: key %F6 # F6
+	Button 4: key %F7 # F7
+	Button 5: key %F8 # F8
+	Button 8: key %space # Change Mode
+	Button 9: key %space # Change Mode
+	Button 10: key %z # Use
+	Button 11: key %z # Use
 	Button 12: key %Return
 }
 

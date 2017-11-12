@@ -3,15 +3,15 @@
 Joystick 1 {
 	Axis 1: +key %Right, -key %Left
 	Axis 4: +key %Down, -key %Up
-	Button 1: key %space
-	Button 2: key %space
-	Button 3: key %Alt_L
-	Button 4: key %Control_L
-	Button 5: key %5
-	Button 8: key %1
-	Button 9: key %2
-	Button 10: key %3
-	Button 11: key %4
+	Button 1: key %space 
+	Button 2: key %space # Fire
+	Button 3: key %Alt_L # Jump
+	Button 4: key %Control_L # Cycle Weapons 
+	Button 5: key %5 # Weapon 5
+	Button 8: key %1 # Weapon 1
+	Button 9: key %2 # Weapon 2
+	Button 10: key %3 # Weapon 3
+	Button 11: key %4 # Weapon 4
 	Button 12: key %Escape
 }
 
@@ -19,14 +19,14 @@ Joystick 2 {
 	Axis 1: +key %Right, -key %Left
 	Axis 4: +key %Down, -key %Up
 	Button 1: key %Delete
-	Button 2: key %space
-	Button 3: key %Alt_L
-	Button 4: key %Control_L
-	Button 5: key %5
-	Button 8: key %1
-	Button 9: key %2
-	Button 10: key %3
-	Button 11: key %4
+	Button 2: key %space # Fire
+	Button 3: key %Alt_L # Jump
+	Button 4: key %Control_L # Cycle Weapons 
+	Button 5: key %5 # Weapon 5
+	Button 8: key %1 # Weapon 1
+	Button 9: key %2 # Weapon 2
+	Button 10: key %3 # Weapon 3
+	Button 11: key %4 # Weapon 4
 	Button 12: key %Return
 }
 

@@ -4,14 +4,14 @@ Joystick 1 {
 	Axis 1: +key %Right, -key %Left
 	Axis 4: +key %Down, -key %Up
 	Button 1: key %space
-	Button 2: key %k
-	Button 3: key %k
-	Button 4: key %k
-	Button 5: key %y
-	Button 8: key %space
-	Button 9: key %space
-	Button 10: key %space
-	Button 11: key %n
+	Button 2: key %k # Rotate
+	Button 3: key %k # Rotate
+	Button 4: key %k # Rotate
+	Button 5: key %y     # Yes
+	Button 8: key %space # Drop
+	Button 9: key %space # Drop
+	Button 10: key %space # Drop
+	Button 11: key %n   # No
 	Button 12: key %Escape
 }
 
@@ -19,14 +19,14 @@ Joystick 2 {
 	Axis 1: +key %Right, -key %Left
 	Axis 4: +key %Down, -key %Up
 	Button 1: key %Delete
-	Button 2: key %k
-	Button 3: key %k
-	Button 4: key %k
-	Button 5: key %y
-	Button 8: key %space
-	Button 9: key %space
-	Button 10: key %space
-	Button 11: key %n
+	Button 2: key %k # Rotate
+	Button 3: key %k # Rotate
+	Button 4: key %k # Rotate
+	Button 5: key %y    # Yes
+	Button 8: key %space # Drop
+	Button 9: key %space # Drop
+	Button 10: key %space # Drop
+	Button 11: key %n    # No
 	Button 12: key %Return
 }
 

@@ -1,32 +1,32 @@
 # QJoyPad 4.1 Layout File
 
 Joystick 1 {
-	Axis 1: +key %c, -key %z
+	Axis 1: +key %c, -key %z # Move (P1)
 	Axis 4: +key %x, -key %s
 	Button 1: key %F1
-	Button 2: key %u
-	Button 3: key %i
-	Button 4: key %j
-	Button 5: key %j
-	Button 8: key %n
-	Button 9: key %m
-	Button 10: key %F1
-	Button 11: key %F1
+	Button 2: key %u # High Punch
+	Button 3: key %i # High Kick
+	Button 4: key %j # Block
+	Button 5: key %F1 # P1
+	Button 8: key %n # Punch
+	Button 9: key %m # Kick
+	Button 10: key %j # Block
+	Button 11: key %F1 # P1
 	Button 12: key %Escape
 }
 
 Joystick 2 {
-	Axis 1: +key %Right, -key %Left
+	Axis 1: +key %Right, -key %Left # Move (P2)
 	Axis 4: +key %Down, -key %Up
 	Button 1: key %Delete
-	Button 2: key %Home
-	Button 3: key %Prior
-	Button 4: key %dead_tilde
-	Button 5: key %dead_tilde
-	Button 8: key %End
-	Button 9: key %Next
-	Button 10: key %F2
-	Button 11: key %F2
+	Button 2: key %Home # High Punch
+	Button 3: key %Prior # High Kick
+	Button 4: key %dead_tilde # Block
+	Button 5: key %F2 # P2
+	Button 8: key %End # Punch
+	Button 9: key %Next # Kick
+	Button 10: key %dead_tilde # Block
+	Button 11: key %F2 # P2
 	Button 12: key %F2
 }
 

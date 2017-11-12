@@ -4,14 +4,14 @@ Joystick 1 {
 	Axis 1: +key %period, -key %comma
 	Axis 4: +key %a, -key %q 
 	Button 1: key %space
-	Button 2: key %Tab
-	Button 3: key %Tab
-	Button 4: key %Tab
-	Button 5: key %Tab
-	Button 8: key %Return
-	Button 9: key %Return
-	Button 10: key %Return
-	Button 11: key %Return
+	Button 2: key %Tab 	# Attack
+	Button 3: key %Tab	# Attack
+	Button 4: key %Tab	# Attack
+	Button 5: key %Tab	# Attack
+	Button 8: key %Return	# Select
+	Button 9: key %Return	# Select
+	Button 10: key %Return	# Select
+	Button 11: key %Return	# Select
 	Button 12: key %Escape
 }
 
@@ -19,14 +19,14 @@ Joystick 2 {
 	Axis 1: +key %period, -key %comma
 	Axis 4: +key %a, -key %q 
 	Button 1: key %Delete
-	Button 2: key %Tab
-	Button 3: key %Tab
-	Button 4: key %Tab
-	Button 5: key %Tab
-	Button 8: key %Return
-	Button 9: key %Return
-	Button 10: key %Return
-	Button 11: key %Return
+	Button 2: key %Tab	# Attack
+	Button 3: key %Tab	# Attack
+	Button 4: key %Tab	# Attack
+	Button 5: key %Tab	# Attack
+	Button 8: key %Return	# Select
+	Button 9: key %Return	# Select
+	Button 10: key %Return	# Select
+	Button 11: key %Return	# Select
 	Button 12: key %Return
 }
 

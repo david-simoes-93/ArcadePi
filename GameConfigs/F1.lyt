@@ -4,14 +4,14 @@ Joystick 1 {
 	Axis 1: +key %period, -key %comma
 	Axis 4: +key %z, -key %a
 	Button 1: key %space
-	Button 2: key %Alt_L
-	Button 3: key %Alt_L
-	Button 4: key %Alt_L
-	Button 5: key %Alt_L
-	Button 8: key %space
-	Button 9: key %space
-	Button 10: key %space
-	Button 11: key %space
+	Button 2: key %space # Gear Up
+	Button 3: key %space # Gear Up
+	Button 4: key %space # Gear Up
+	Button 5: key %space # Gear Up
+	Button 8: key %Alt_L # Gear Down
+	Button 9: key %Alt_L # Gear Down
+	Button 10: key %Alt_L # Gear Down
+	Button 11: key %Alt_L # Gear Down
 	Button 12: key %Escape
 }
 
@@ -19,14 +19,14 @@ Joystick 2 {
 	Axis 1: +key %period, -key %comma
 	Axis 4: +key %z, -key %a
 	Button 1: key %Delete
-	Button 2: key %Alt_L
-	Button 3: key %Alt_L
-	Button 4: key %Alt_L
-	Button 5: key %Alt_L
-	Button 8: key %space
-	Button 9: key %space
-	Button 10: key %space
-	Button 11: key %space
+	Button 2: key %space # Gear Up
+	Button 3: key %space # Gear Up
+	Button 4: key %space # Gear Up
+	Button 5: key %space # Gear Up
+	Button 8: key %Alt_L # Gear Down
+	Button 9: key %Alt_L # Gear Down
+	Button 10: key %Alt_L # Gear Down
+	Button 11: key %Alt_L # Gear Down
 	Button 12: key %Return
 }
 

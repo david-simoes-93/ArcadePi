@@ -1,32 +1,32 @@
 # QJoyPad 4.1 Layout File
 
 Joystick 1 {
-	Axis 1: +key %Right, -key %Left
+	Axis 1: +key %Right, -key %Left # Move (P1)
 	Axis 4: +key %Down, -key %Up
 	Button 1: key %space
-	Button 2: key %Return
-	Button 3: key %Return
-	Button 4: key %Return
-	Button 5: key %Return
-	Button 8: key %n
-	Button 9: key %n
-	Button 10: key %n
-	Button 11: key %n
+	Button 2: key %Return  # Fire
+	Button 3: key %Return # Fire
+	Button 4: key %Return # Fire
+	Button 5: key %Return # Fire
+	Button 8: key %n # Detonate
+	Button 9: key %n # Detonate
+	Button 10: key %n # Detonate
+	Button 11: key %n # Detonate
 	Button 12: key %Escape
 }
 
 Joystick 2 {
-	Axis 1: +key %e, -key %q
+	Axis 1: +key %e, -key %q # Move (P2)
 	Axis 4: +key %w, -key %2
 	Button 1: key %Delete
-	Button 2: key %Tab
-	Button 3: key %Tab
-	Button 4: key %Tab
-	Button 5: key %Tab
-	Button 8: key %n
-	Button 9: key %n
-	Button 10: key %n
-	Button 11: key %n
+	Button 2: key %Tab # Fire
+	Button 3: key %Tab # Fire
+	Button 4: key %Tab # Fire
+	Button 5: key %Tab # Fire
+	Button 8: key %n # Detonate
+	Button 9: key %n # Detonate
+	Button 10: key %n # Detonate
+	Button 11: key %n # Detonate
 	Button 12: key %Return
 }
 

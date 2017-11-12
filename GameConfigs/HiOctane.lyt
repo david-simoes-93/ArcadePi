@@ -4,14 +4,14 @@ Joystick 1 {
 	Axis 1: +key %Right, -key %Left
 	Axis 4: +key %Down, -key %Up
 	Button 1: key %space
-	Button 2: key %c
-	Button 3: key %c
-	Button 4: key %z
-	Button 5: key %z
-	Button 8: key %x
-	Button 9: key %x
-	Button 10: key %x
-	Button 11: key %x
+	Button 2: key %c # Afterburner
+	Button 3: key %c # Afterburner
+	Button 4: key %c # Afterburner
+	Button 5: key %c # Afterburner
+	Button 8: key %z # Guns
+	Button 9: key %z # Guns
+	Button 10: key %x # Missiles
+	Button 11: key %x # Missiles
 	Button 12: key %Escape
 }
 
@@ -19,14 +19,14 @@ Joystick 2 {
 	Axis 1: +key %Right, -key %Left
 	Axis 4: +key %Down, -key %Up
 	Button 1: key %Delete
-	Button 2: key %c
-	Button 3: key %c
-	Button 4: key %z
-	Button 5: key %z
-	Button 8: key %x
-	Button 9: key %x
-	Button 10: key %x
-	Button 11: key %x
+	Button 2: key %c # Afterburner
+	Button 3: key %c # Afterburner
+	Button 4: key %c # Afterburner
+	Button 5: key %c # Afterburner
+	Button 8: key %z # Guns
+	Button 9: key %z # Guns
+	Button 10: key %x # Missiles
+	Button 11: key %x # Missiles
 	Button 12: key %Return
 }
 

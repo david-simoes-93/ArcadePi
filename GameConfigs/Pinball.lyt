@@ -1,33 +1,33 @@
 # QJoyPad 4.1 Layout File
 
 Joystick 1 {
-	Axis 1: +key %Right, -key %Left
+	Axis 1: +key %Right, -key %Left # Look & Move
 	Axis 4: +key %Down, -key %Up
-	Button 1: key %Left
-	Button 2: key %space
-	Button 3: key %Left
-	Button 4: key %Right
-	Button 5: key %Up
-	Button 8: key %Return
-	Button 9: key %Left
-	Button 10: key %Right
-	Button 11: key %Down
+	Button 1: key %Left # Flipper L
+	Button 2: key %space # Shoot
+	Button 3: key %Left # Flipper L
+	Button 4: key %Right # Flipper R
+	Button 5: key %Up # Look Up
+	Button 8: key %Return # Select
+	Button 9: key %Left # Flipper L
+	Button 10: key %Right # Flipper R
+	Button 11: key %Down# Look Down
 	Button 12: key %Escape
 }
 
 Joystick 2 {
-	Axis 1: +key %Right, -key %Left
+	Axis 1: +key %Right, -key %Left  # Look & Move
 	Axis 4: +key %Down, -key %Up
 	Button 1: key %Delete
-	Button 2: key %space
-	Button 3: key %Left
-	Button 4: key %Right
-	Button 5: key %Up
-	Button 8: key %Return
-	Button 9: key %Left
-	Button 10: key %Right
-	Button 11: key %Down
-	Button 12: key %Right
+	Button 2: key %space # Shoot
+	Button 3: key %Left # Flipper L
+	Button 4: key %Right # Flipper R
+	Button 5: key %Up # Look Up
+	Button 8: key %Return # Select
+	Button 9: key %Left # Flipper L
+	Button 10: key %Right # Flipper R
+	Button 11: key %Down # Look Down
+	Button 12: key %Right # Flipper R
 }
 
 # left right space return up down

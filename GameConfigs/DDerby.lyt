@@ -4,14 +4,14 @@ Joystick 1 {
 	Axis 1: +key %Right, -key %Left
 	Axis 4: +key %Down, -key %Up
 	Button 1: key %space
-	Button 2: key %space
-	Button 3: key %space
-	Button 4: key %space
-	Button 5: key %space
-	Button 8: key %w
-	Button 9: key %w
-	Button 10: key %d
-	Button 11: key %d
+	Button 2: key %space # Fast Steer
+	Button 3: key %space # Fast Steer
+	Button 4: key %space # Fast Steer
+	Button 5: key %space # Fast Steer
+	Button 8: key %w # Zoom Out
+	Button 9: key %w # Zoom Out
+	Button 10: key %d # Zoom In
+	Button 11: key %d # Zoom In
 	Button 12: key %Escape
 }
 
@@ -19,14 +19,14 @@ Joystick 2 {
 	Axis 1: +key %Right, -key %Left
 	Axis 4: +key %Down, -key %Up
 	Button 1: key %Delete
-	Button 2: key %space
-	Button 3: key %space
-	Button 4: key %space
-	Button 5: key %space
-	Button 8: key %w
-	Button 9: key %w
-	Button 10: key %d
-	Button 11: key %d
+	Button 2: key %space # Fast Steer
+	Button 3: key %space # Fast Steer
+	Button 4: key %space # Fast Steer
+	Button 5: key %space # Fast Steer
+	Button 8: key %w # Zoom Out
+	Button 9: key %w # Zoom Out
+	Button 10: key %d # Zoom In
+	Button 11: key %d # Zoom In
 	Button 12: key %Return
 }
 

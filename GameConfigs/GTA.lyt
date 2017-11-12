@@ -4,14 +4,14 @@ Joystick 1 {
 	Axis 1: +key %Right, -key %Left
 	Axis 4: +key %Down, -key %Up
 	Button 1: key %space
-	Button 2: key %Control_L
-	Button 3: key %Return
-	Button 4: key %Tab
-	Button 5: key %z
-	Button 8: key %Control_L
-	Button 9: key %Return
-	Button 10: key %space
-	Button 11: key %x
+	Button 2: key %Control_L # Fire
+	Button 3: key %Return # Carjack
+	Button 4: key %space # Slide
+	Button 5: key %z # Cycle Weapon L
+	Button 8: key %Control_L # Fire
+	Button 9: key %Return # Carjack
+	Button 10: key %Tab # Fart / Burp
+	Button 11: key %x # Cycle Weapon R
 	Button 12: key %Escape
 }
 
@@ -19,14 +19,14 @@ Joystick 2 {
 	Axis 1: +key %Right, -key %Left
 	Axis 4: +key %Down, -key %Up
 	Button 1: key %Delete
-	Button 2: key %F6
-	Button 3: key %F10
-	Button 4: key %F7
-	Button 5: key %F5
-	Button 8: key %F6
-	Button 9: key %F10
-	Button 10: key %F7
-	Button 11: key %F9
+	Button 2: key %F6 # Pause / Info
+	Button 3: key %F10 # Repeat Phone
+	Button 4: key %F7 # Repeat Beaper
+	Button 5: key %F5 # Cycle Radio
+	Button 8: key %F6 # Pause / Info
+	Button 9: key %F10 # Repeat Phone
+	Button 10: key %F7 # Repeat Beaper
+	Button 11: key %F9 # Suburb Name
 	Button 12: key %Return
 }
 
