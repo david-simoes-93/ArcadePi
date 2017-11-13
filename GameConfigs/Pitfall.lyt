@@ -1,0 +1,31 @@
+# QJoyPad 4.1 Layout File
+
+Joystick 1 {
+	Axis 1: +key %Right, -key %Left
+	Axis 4: +key %Down, -key %Up
+	Button 1: key %space
+	Button 2: key %q # Melee Hit
+	Button 3: key %w # Jump
+	Button 4: key %e # Fire
+	Button 5: key %space # Cycle
+	Button 8: key %q # Melee Hit
+	Button 9: key %w # Jump
+	Button 10: key %e # Fire
+	Button 11: key %space # Cycle
+	Button 12: key %Escape
+}
+
+Joystick 2 {
+	Axis 1: +key %Right, -key %Left
+	Axis 4: +key %Down, -key %Up
+	Button 1: key %Delete
+	Button 2: key %q # Melee Hit
+	Button 3: key %w # Jump
+	Button 4: key %e # Fire
+	Button 5: key %space # Cycle
+	Button 8: key %q # Melee Hit
+	Button 9: key %w # Jump
+	Button 10: key %e # Fire
+	Button 11: key %space # Cycle
+	Button 12: key %Return
+}

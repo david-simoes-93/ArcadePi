@@ -10,7 +10,7 @@ from time import sleep
 class GameFrame(Frame):
     def __init__(self, root, game_name, w):
         h = w * 1.4
-        Frame.__init__(self, root, width=w, height=h, background="#000000")
+        Frame.__init__(self, root, width=w, height=h, background="#000000", cursor='none')
         self.pack_propagate(0)
 
         if game_name != "":
@@ -97,6 +97,8 @@ class Application(Frame):
     def key(self, event):
         if self.game_widgets[self.selected_gf].game_id is None:
             return
+
+        self.root.withdraw()
 
         gui_controls = Toplevel(self.root)
         GuiControls(gui_controls, self)

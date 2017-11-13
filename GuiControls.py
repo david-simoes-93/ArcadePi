@@ -18,7 +18,7 @@ class GuiControls(Frame):
         root.configure(background='black')
 
         self.root = root
-        Frame.__init__(self, root, width=w, height=h, background="#000000")
+        Frame.__init__(self, root, width=w, height=h, background="#000000", cursor='none')
         self.canvas = Canvas(self, width=w, height=h, borderwidth=0, background="#000000")
 
         self.title = [
@@ -78,49 +78,49 @@ class GuiControls(Frame):
                     elif "Button 12:" in lines[0]:
                         movs[2] = key
 
-        height_joy = 465
+        height_joy = int(435*image_ratio)
         self.joy1 = Label(self.canvas, text=p1_movs[0], background="#000000", foreground="#00ff00",
                           font=("Courier", 34))
-        self.joy1.place(relx=225 / w, rely=height_joy / h, anchor='c')
+        self.joy1.place(relx=int(215*image_ratio)/w, rely=height_joy/h, anchor='c')
         self.joy2 = Label(self.canvas, text=p2_movs[0], background="#000000", foreground="#00ff00",
                           font=("Courier", 34))
-        self.joy2.place(relx=850 / w, rely=height_joy / h, anchor='c')
+        self.joy2.place(relx=int(795*image_ratio)/w, rely=height_joy/h, anchor='c')
 
-        height_bot_row = 620
+        height_bot_row = int(580*image_ratio)
         self.but_left = Label(self.canvas, text=p1_movs[1], background="#000000", foreground="#00ff00",
                               font=("Courier", 34))
-        self.but_left.place(relx=120 / w, rely=height_bot_row / h, anchor='w')
+        self.but_left.place(relx=int(100*image_ratio)/w, rely=height_bot_row/h, anchor='w')
         self.but_right = Label(self.canvas, text=p2_movs[2], background="#000000", foreground="#00ff00",
                                font=("Courier", 34))
-        self.but_right.place(relx=1250 / w, rely=height_bot_row / h, anchor='e')
+        self.but_right.place(relx=int(1180*image_ratio)/w, rely=height_bot_row/h, anchor='e')
 
         self.but_center_left = Label(self.canvas, text=p1_movs[2], background="#000000", foreground="#00ff00",
                                      font=("Courier", 34))
-        self.but_center_left.place(relx=600 / w, rely=height_bot_row / h, anchor='e')
+        self.but_center_left.place(relx=int(580*image_ratio)/w, rely=height_bot_row/h, anchor='e')
         self.but_center_right = Label(self.canvas, text=p2_movs[1], background="#000000", foreground="#00ff00",
                                       font=("Courier", 34))
-        self.but_center_right.place(relx=760 / w, rely=height_bot_row / h, anchor='w')
+        self.but_center_right.place(relx=int(700*image_ratio)/w, rely=height_bot_row/h, anchor='w')
 
-        height_but_top = 235
-        height_but_bot = 365
+        height_but_top = int(235 * image_ratio)
+        height_but_bot = int(365 * image_ratio)
         self.p1_buts = []
         self.p2_buts = []
         for i in range(4):
             self.p1_buts.append(
-                self.canvas.create_text(int((385 + i * 66) * image_ratio), int(height_but_top * image_ratio),
+                self.canvas.create_text(int((385 + i * 66) * image_ratio), height_but_top,
                                         anchor="w", font=("Courier", 15), angle=45, fill="#00ff00",
                                         text=p1_movs[i + 3]))
             self.p2_buts.append(
-                self.canvas.create_text(int((960 + i * 66) * image_ratio), int(height_but_top * image_ratio),
+                self.canvas.create_text(int((960 + i * 66) * image_ratio), height_but_top,
                                         anchor="w", font=("Courier", 15), angle=45, fill="#00ff00",
                                         text=p2_movs[i + 3]))
         for i in range(4):
             self.p1_buts.append(
-                self.canvas.create_text(int((385 + i * 66) * image_ratio), int(height_but_bot * image_ratio),
+                self.canvas.create_text(int((385 + i * 66) * image_ratio), height_but_bot,
                                         anchor="w", font=("Courier", 15), angle=-45, fill="#00ff00",
                                         text=p1_movs[i + 7]))
             self.p2_buts.append(
-                self.canvas.create_text(int((960 + i * 66) * image_ratio), int(height_but_bot * image_ratio),
+                self.canvas.create_text(int((960 + i * 66) * image_ratio), height_but_bot,
                                         anchor="w", font=("Courier", 15), angle=-45, fill="#00ff00",
                                         text=p2_movs[i + 7]))
 
@@ -152,8 +152,7 @@ class GuiControls(Frame):
 
         Game(self.app.game_widgets[self.app.selected_gf].game_id, self.app.key_values).start_game()
 
-        # sleep(2)
-        # self.app.root.geometry("%dx%d+0+0" % (self.app.root.winfo_screenwidth(), self.app.root.winfo_screenheight()))
         self.app.qjoypad = set_gui_controller(self.app.key_values)
 
+        self.app.root.deiconify()
         self.app.root.focus_set()

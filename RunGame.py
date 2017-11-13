@@ -115,17 +115,26 @@ class Game:
 
         # Start game
         print(self.cwd + '/Games/' + self.id + '/' + self.game_path)
+        wine_cwd = None
         if "dosbox" in self.config_file:
             cmd = ['dosbox', self.cwd + '/Games/DOS/' + self.id + '/' + self.game_path, '-conf',
                    self.cwd + '/EmuConfigs/' + self.config_file]
         elif "gpsp" in self.config_file:
             cmd = ['gpsp', self.cwd + '/Games/GBA/' + self.game_path]
         elif "gambatte" in self.config_file:
-            cmd = ['gambatte_sdl', "-s", "5", "-f", self.cwd + '/Games/GB/' + self.game_path]
+            cmd = ['gambatte', "-s", "5", "-f", self.cwd + '/Games/GB/' + self.game_path]
+        elif "wine" in self.config_file:
+            cmd = ['wine', self.game_path]
+            wine_cwd = self.cwd + '/Games/Wine/' + self.id + '/'
         else:
             cmd = self.config_file.split(" ")
         print("Running ", cmd)
-        game = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
+        if wine_cwd is not None:
+            print("cd", wine_cwd)
+            game = subprocess.Popen(cmd, cwd=wine_cwd,
+                                stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
+        else:
+            game = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
 
         # Run initial key setup
         for line in self.game_config_lines:
