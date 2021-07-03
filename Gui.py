@@ -39,9 +39,10 @@ class GameFrame(Frame):
 
 
 class Application(Frame):
-    def __init__(self, root, games_list, key_values):
+    def __init__(self, root, games_list, key_values, fullscreen):
+        self.fs = fullscreen
         w, h = root.winfo_screenwidth(), root.winfo_screenheight()
-        root.attributes('-fullscreen', True)
+        root.attributes('-fullscreen', fullscreen)
         root.attributes("-topmost", True)
         #root.resizable(width=False, height=False)
         root.geometry("%dx%d+0+0" % (w, h))
@@ -101,7 +102,19 @@ class Application(Frame):
         self.root.withdraw()
 
         gui_controls = Toplevel(self.root)
-        GuiControls(gui_controls, self)
+        self.gui_controls = GuiControls(gui_controls, self, self.fs)
+        
+    def run_game_after_controls_gui_closes(self):
+        Game(self.game_widgets[self.selected_gf].game_id, self.key_values).start_game()
+
+        self.qjoypad = set_gui_controller(self.key_values)
+        
+        # KILL EVERYTHING after game is run
+        self.quit()
+        
+        # the shell script will launch new stuff, everything is cleared
+        #self.root.deiconify()
+        #self.root.focus_set()
 
     def right(self, event):
         self.clear_selected()

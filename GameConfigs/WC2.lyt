@@ -2,7 +2,7 @@
 
 Joystick 1 {
 	Axis 1: +key %Right, -key %Left
-	Axis 4: +key %Down, -key %Up
+	Axis 2: +key %Down, -key %Up
 	Button 1: key %space
 	Button 2: key %Tab		# Afterburner
 	Button 3: key %space 	# Fire Guns
@@ -17,7 +17,7 @@ Joystick 1 {
 
 Joystick 2 {
 	Axis 1: +key %F3, -key %F2   # Look
-	Axis 4: +key %F4, -key %F1
+	Axis 2: +key %F4, -key %F1
 	Button 1: key %Delete
 	Button 2: key %F5   	# Chase View
 	Button 3: key %F6   	# Battle View

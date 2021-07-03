@@ -2,7 +2,7 @@
 
 Joystick 1 {
 	Axis 1: +key %c, -key %z # Move (P1)
-	Axis 4: +key %x, -key %s
+	Axis 2: +key %x, -key %s
 	Button 1: key %F1
 	Button 2: key %u # High Punch
 	Button 3: key %i # High Kick
@@ -17,7 +17,7 @@ Joystick 1 {
 
 Joystick 2 {
 	Axis 1: +key %Right, -key %Left # Move (P2)
-	Axis 4: +key %Down, -key %Up
+	Axis 2: +key %Down, -key %Up
 	Button 1: key %Delete
 	Button 2: key %Home # High Punch
 	Button 3: key %Prior # High Kick

@@ -2,7 +2,7 @@
 
 Joystick 1 {
 	Axis 1: +key %Right, -key %Left # Move (P1)
-	Axis 4: +key %Down, -key %Up
+	Axis 2: +key %Down, -key %Up
 	Button 1: key %space
 	Button 2: key %Return  # Fire
 	Button 3: key %Return # Fire
@@ -17,7 +17,7 @@ Joystick 1 {
 
 Joystick 2 {
 	Axis 1: +key %e, -key %q # Move (P2)
-	Axis 4: +key %w, -key %2
+	Axis 2: +key %w, -key %2
 	Button 1: key %Delete
 	Button 2: key %Tab # Fire
 	Button 3: key %Tab # Fire

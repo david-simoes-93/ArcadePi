@@ -2,7 +2,7 @@
 
 Joystick 1 {
 	Axis 1: +key %Right, -key %Left # Look & Move
-	Axis 4: +key %Down, -key %Up
+	Axis 2: +key %Down, -key %Up
 	Button 1: key %Left # Flipper L
 	Button 2: key %space # Shoot
 	Button 3: key %Left # Flipper L
@@ -17,7 +17,7 @@ Joystick 1 {
 
 Joystick 2 {
 	Axis 1: +key %Right, -key %Left  # Look & Move
-	Axis 4: +key %Down, -key %Up
+	Axis 2: +key %Down, -key %Up
 	Button 1: key %Delete
 	Button 2: key %space # Shoot
 	Button 3: key %Left # Flipper L

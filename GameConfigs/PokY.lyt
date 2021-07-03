@@ -2,7 +2,7 @@
 
 Joystick 1 {
 	Axis 1: +key %Right, -key %Left
-	Axis 4: +key %Down, -key %Up
+	Axis 2: +key %Down, -key %Up
 	Button 1: key %space
 	Button 2: key %d                    #A
 	Button 3: key %c                    #B
@@ -12,12 +12,12 @@ Joystick 1 {
 	Button 9: key %c                    #B
 	Button 10: key %Shift_R             #Select
 	Button 11: key %Tab                 #Speed
-	Button 12: key %Escape
+	Button 12: key %Delete
 }
 
 Joystick 2 {
 	Axis 1: +key %Right, -key %Left
-	Axis 4: +key %Down, -key %Up
+	Axis 2: +key %Down, -key %Up
 	Button 1: key %Delete
 	Button 2: key %d                    #A
 	Button 3: key %c                    #B

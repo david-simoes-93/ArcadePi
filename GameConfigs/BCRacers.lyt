@@ -2,7 +2,7 @@
 
 Joystick 1 {
 	Axis 1: +key %period, -key %comma
-	Axis 4: +key %a, -key %q 
+	Axis 2: +key %a, -key %q 
 	Button 1: key %space
 	Button 2: key %Tab 	# Attack
 	Button 3: key %Tab	# Attack
@@ -17,7 +17,7 @@ Joystick 1 {
 
 Joystick 2 {
 	Axis 1: +key %period, -key %comma
-	Axis 4: +key %a, -key %q 
+	Axis 2: +key %a, -key %q 
 	Button 1: key %Delete
 	Button 2: key %Tab	# Attack
 	Button 3: key %Tab	# Attack

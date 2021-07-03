@@ -4,20 +4,22 @@ from PIL import ImageTk, Image
 
 from RunGame import *
 from time import sleep
+import threading
 
 
 class GuiControls(Frame):
-    def __init__(self, root, app):
+    def __init__(self, root, app, fullscreen):
         self.app = app
 
         w, h = root.winfo_screenwidth(), root.winfo_screenheight()
-        root.attributes('-fullscreen', True)
+        root.attributes('-fullscreen', fullscreen)
         root.attributes("-topmost", True)
         # root.resizable(width=False, height=False)
         root.geometry("%dx%d+0+0" % (w, h))
         root.configure(background='black')
 
         self.root = root
+        
         Frame.__init__(self, root, width=w, height=h, background="#000000", cursor='none')
         self.canvas = Canvas(self, width=w, height=h, borderwidth=0, background="#000000")
 
@@ -145,14 +147,11 @@ class GuiControls(Frame):
     def down(self, event):
         self.selected = (self.selected - 1) if (self.selected - 1) >= 0 else self.selection_max - 1
         self.set_selection()
-
+        
     def quit_del(self, event):
+        # despite destroying, nothing gets refreshed until this method ends
+        self.destroy()
         self.root.destroy()
         kill_gui_controller(self.app.qjoypad)
-
-        Game(self.app.game_widgets[self.app.selected_gf].game_id, self.app.key_values).start_game()
-
-        self.app.qjoypad = set_gui_controller(self.app.key_values)
-
-        self.app.root.deiconify()
-        self.app.root.focus_set()
+        
+        self.app.run_game_after_controls_gui_closes()

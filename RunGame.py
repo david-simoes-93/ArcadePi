@@ -185,6 +185,7 @@ def process_lyt(path, keymaps):
         with open(path) as lyt:
             for line in lyt:
                 line = line.split("#")[0]
+                #print("Reading " + line)
                 while "%" in line:
                     try:
                         first_index = line.index("%")
@@ -199,5 +200,5 @@ def process_lyt(path, keymaps):
                     except:
                         print("Key not recognized:", "-" + line[first_index + 1:second_index] + "-")
                         line = ""
-                # print(line)
-                processed_lyt.write(line)
+                print(line)
+                processed_lyt.write(line.strip()+"\n")

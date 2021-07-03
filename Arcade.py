@@ -92,5 +92,5 @@ print("Loaded")
 print(games_list)
 
 root = Tk()
-app = Application(root, games_list, key_values)
+app = Application(root, games_list, key_values, True)
 root.mainloop()
