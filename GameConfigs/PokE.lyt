@@ -4,8 +4,8 @@ Joystick 1 {
 	Axis 1: +key %Right, -key %Left
 	Axis 2: +key %Down, -key %Up
 	Button 1: key %space
-	Button 2: key %z 	# A
-	Button 3: key %x  	# B
+	Button 2: key %x 	# A
+	Button 3: key %z  	# B
 	Button 4: key %Return # Start
 	Button 5: key %Return # Start
 	Button 8: key %a    # L1
@@ -19,8 +19,8 @@ Joystick 2 {
 	Axis 1: +key %Right, -key %Left
 	Axis 2: +key %Down, -key %Up
 	Button 1: key %Delete
-	Button 2: key %z 	# A
-	Button 3: key %x  	# B
+	Button 2: key %x 	# A
+	Button 3: key %z  	# B
 	Button 4: key %Return # Start
 	Button 5: key %Return # Start
 	Button 8: key %a    # L1
