@@ -120,7 +120,7 @@ class Game:
             cmd = ['dosbox', self.cwd + '/Games/DOS/' + self.id + '/' + self.game_path, '-conf',
                    self.cwd + '/EmuConfigs/' + self.config_file]
         elif "gpsp" in self.config_file:
-            cmd = ['mgba', '-4', self.cwd + '/Games/GBA/' + self.game_path]
+            cmd = ['mgba', '-f', '-s', '2', self.cwd + '/Games/GBA/' + self.game_path]
         elif "gambatte" in self.config_file:
             cmd = ['gambatte', "-s", "5", "-f", self.cwd + '/Games/GB/' + self.game_path]
         elif "wine" in self.config_file:
